@@ -121,10 +121,15 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
 /* KPI cumulative cards */
 .kpi-row{display:grid; grid-template-columns:repeat(4,1fr); gap:var(--gap); margin-bottom:var(--gap-lg)}
 .kpi{background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px 20px;
-  border-left:4px solid var(--blue)}
+  border-left:4px solid var(--blue); display:flex; flex-direction:column}
 .kpi.dep{border-left-color:var(--yellow)}
-.kpi-label{font-size:12px; color:var(--ink-2); font-weight:700; text-transform:uppercase; letter-spacing:.5px; min-height:30px}
-.kpi-value{font-size:27px; font-weight:900; color:var(--ink); letter-spacing:-.5px; margin-top:8px; line-height:1}
+.kpi-top{display:flex; align-items:flex-start; gap:12px}
+.kpi-ico{flex:0 0 auto; width:38px; height:38px; border-radius:8px; background:var(--blue-01);
+  display:flex; align-items:center; justify-content:center}
+.kpi.dep .kpi-ico{background:#FFEFC7}
+.kpi-ico img{width:22px; height:22px; object-fit:contain; display:block}
+.kpi-label{flex:1; font-size:12px; color:var(--ink-2); font-weight:700; text-transform:uppercase; letter-spacing:.5px; min-height:30px}
+.kpi-value{font-size:27px; font-weight:900; color:var(--ink); letter-spacing:-.5px; margin-top:auto; padding-top:8px; line-height:1}
 .kpi-note{font-size:12px; color:var(--ink-3); margin-top:6px}
 
 /* Charts */
@@ -157,6 +162,9 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
   body{padding:var(--gap)}
   .stay-row{grid-template-columns:1fr}
   .kpi-row{grid-template-columns:1fr 1fr}
+  .kpi-top{gap:9px}
+  .kpi-ico{width:32px; height:32px; border-radius:7px}
+  .kpi-ico img{width:19px; height:19px}
   .header h1{font-size:20px}
   .brand{flex-direction:column; align-items:flex-start; gap:12px}
   .logo-desktop{display:none}
@@ -225,22 +233,34 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
   <div class="sec-title">Cumulative refugee flows <span id="kpiThru" style="text-transform:none;font-weight:400;color:var(--ink-3)"></span></div>
   <div class="kpi-row">
     <div class="kpi">
-      <div class="kpi-label">Arrivals · Ukrainians from Ukraine</div>
+      <div class="kpi-top">
+        <div class="kpi-ico"><img src="https://raw.githubusercontent.com/mdachim/population_movement/main/icons/arrival.png" alt="" onerror="this.style.display='none'"></div>
+        <div class="kpi-label">Arrivals · Ukrainians from Ukraine</div>
+      </div>
       <div class="kpi-value" id="kpiArrUkr">—</div>
       <div class="kpi-note">Entries via Ukraine border</div>
     </div>
     <div class="kpi">
-      <div class="kpi-label">Arrivals · Ukrainians from elsewhere</div>
+      <div class="kpi-top">
+        <div class="kpi-ico"><img src="https://raw.githubusercontent.com/mdachim/population_movement/main/icons/arrival.png" alt="" onerror="this.style.display='none'"></div>
+        <div class="kpi-label">Arrivals · Ukrainians from elsewhere</div>
+      </div>
       <div class="kpi-value" id="kpiArrElse">—</div>
       <div class="kpi-note">Entries via Romania &amp; air</div>
     </div>
     <div class="kpi dep">
-      <div class="kpi-label">Departures · Ukrainians to Ukraine</div>
+      <div class="kpi-top">
+        <div class="kpi-ico"><img src="https://raw.githubusercontent.com/mdachim/population_movement/main/icons/departure.png" alt="" onerror="this.style.display='none'"></div>
+        <div class="kpi-label">Departures · Ukrainians to Ukraine</div>
+      </div>
       <div class="kpi-value" id="kpiDepUkr">—</div>
       <div class="kpi-note">Exits via Ukraine border</div>
     </div>
     <div class="kpi dep">
-      <div class="kpi-label">Departures · Ukrainians to elsewhere</div>
+      <div class="kpi-top">
+        <div class="kpi-ico"><img src="https://raw.githubusercontent.com/mdachim/population_movement/main/icons/departure.png" alt="" onerror="this.style.display='none'"></div>
+        <div class="kpi-label">Departures · Ukrainians to elsewhere</div>
+      </div>
       <div class="kpi-value" id="kpiDepElse">—</div>
       <div class="kpi-note">Exits via Romania &amp; air</div>
     </div>
