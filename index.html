@@ -246,6 +246,7 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
   body *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .wrap{width:100%;max-width:none;margin:0}
   html.embedded,html.embedded body,html.embedded .wrap{height:auto;overflow:visible}
+  html.embedded .wrap{padding:0}
   .page-tabs,.page-actions,.lang-switch,.timeline .tl-controls,
   .year-nav .tl-btn,.year-nav .tl-latest{display:none!important}
   body[data-print-page="population"] #tpPage,
@@ -333,7 +334,7 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
   }
 
   /* Population Trends is tuned to remain on one portrait A4 sheet. */
-  body[data-print-page="population"] #populationPage{zoom:.97}
+  body[data-print-page="population"] .wrap{zoom:.9}
   body[data-print-page="population"] .header{padding:3.5mm 5mm;margin-bottom:3mm}
   body[data-print-page="population"] .timeline{padding:3mm 4mm;margin-bottom:3mm}
   body[data-print-page="population"] .sec-title{margin-bottom:2mm}
