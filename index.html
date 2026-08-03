@@ -466,6 +466,9 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
     Source: cross-border flow records for Ukrainian refugees reported by the Border Police, Mar 2022 – Jun 2026 <br>
     Figures for the refugee population present are model estimates and are rounded in labels.
   </div>
+  <div class="page-actions">
+    <button class="print-btn" id="printPopulation" type="button"><span class="print-icon" aria-hidden="true">🖨</span>Print this page</button>
+  </div>
   </section>
 
   <section class="dashboard-page" id="tpPage" hidden>
@@ -659,7 +662,7 @@ function T(key, ...args){
 // Strings carrying markup (&amp;, <b>) are written as HTML, so decode for textContent.
 const dec = html => { const t=document.createElement('textarea'); t.innerHTML=html; return t.value; };
 
-let DATA, M, idx, YEARS, chartYear, ERRMSG=null;
+let POP_TRENDS_DATA, TP_DATA=null, M, idx, YEARS, chartYear, ERRMSG=null;
 const SPAN=[], COVER=[];
 const yearOf = k => parseInt(k.slice(0,4),10);
 
@@ -676,7 +679,7 @@ const GC = {women:'#0072BC', men:'#05568B', boys:'#6CD8FD', girls:'#A097E3'};
 
 /* ---------- page navigation ---------- */
 let activePage='population', populationAsOf=null;
-const formatLongDate = value => new Date(value+'T00:00:00Z').toLocaleDateString('en-GB',{
+const formatLongDate = value => new Date(value+'T00:00:00Z').toLocaleDateString(T('locale'),{
   day:'numeric',month:'long',year:'numeric',timeZone:'UTC'
 });
 function updateHeaderForPage(){
@@ -723,6 +726,7 @@ function initTabs(){
   document.getElementById('printPopulation').onclick=()=>printDashboard('population');
   document.getElementById('printTP').onclick=()=>printDashboard('tp');
   document.getElementById('printTP').disabled=true;
+  document.getElementById('printPopulation').disabled=true;
   updateHeaderForPage();
 }
 
@@ -1002,8 +1006,7 @@ function render(){
   const m=M[idx];
   document.getElementById('tlMonth').textContent=keyLabel(m.key);
   document.getElementById('slider').value=idx;
-  document.getElementById('asof').textContent=
-    new Date(DATA.updated).toLocaleDateString(T('locale'),{day:'numeric',month:'long',year:'numeric'});
+  updateHeaderForPage();
 
   document.getElementById('valUkr').textContent=fmt(m.stay_ukraine.total);
   document.getElementById('valElse').textContent=fmt(m.stay_elsewhere.total);
@@ -1080,13 +1083,13 @@ function init(){
     c.addEventListener('click',()=>c.classList.toggle('open'));
   });
 }
-async function boot(){
+async function bootPopulation(){
   applyStatic();
   try{
-    const res = await fetch(DATA_URL, {cache:'no-store'});
+    const res = await fetch(POP_TRENDS_URL, {cache:'no-store'});
     if(!res.ok) throw new Error(T('errHttp',res.status));
-    DATA = await res.json();
-    if(!DATA || !Array.isArray(DATA.months) || !DATA.months.length) throw new Error(T('errShape'));
+    POP_TRENDS_DATA = await res.json();
+    if(!POP_TRENDS_DATA || !Array.isArray(POP_TRENDS_DATA.months) || !POP_TRENDS_DATA.months.length) throw new Error(T('errShape'));
   }catch(err){
     ERRMSG = String(err.message||err);
     document.querySelector('.wrap').insertAdjacentHTML('afterbegin',
@@ -1098,6 +1101,8 @@ async function boot(){
     return;
   }
   M = POP_TRENDS_DATA.months;
+  populationAsOf = POP_TRENDS_DATA.updated;
+  document.getElementById('printPopulation').disabled=false;
   idx = M.length - 1;
   YEARS = [...new Set(M.map(m=>yearOf(m.key)))].sort((a,b)=>a-b);
   chartYear = YEARS[YEARS.length-1];   // default: latest year; null = all years
