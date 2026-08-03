@@ -46,6 +46,17 @@ body{
 }
 .wrap{max-width:1180px;margin:0 auto}
 
+/* Embedded in an iframe (ODP and similar): hosts often set scrolling="no" or a
+   fixed height, which kills the document's own scrollbar. Scroll inside .wrap
+   instead, so the whole dashboard stays reachable whatever the host does. */
+html.embedded,html.embedded body{height:100%;overflow:hidden}
+html.embedded body{padding:0}
+html.embedded .wrap{
+  height:100%; overflow-y:auto; overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch; padding:var(--gap-lg);
+}
+@media (max-width:860px){ html.embedded .wrap{padding:var(--gap)} }
+
 /* Header */
 .header{
   background:var(--blue); color:#fff; border-radius:var(--radius);
@@ -234,6 +245,7 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
   body{padding:0;color:var(--ink)}
   body *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .wrap{width:100%;max-width:none;margin:0}
+  html.embedded,html.embedded body,html.embedded .wrap{height:auto;overflow:visible}
   .page-tabs,.page-actions,.lang-switch,.timeline .tl-controls,
   .year-nav .tl-btn,.year-nav .tl-latest{display:none!important}
   body[data-print-page="population"] #tpPage,
@@ -581,6 +593,20 @@ const POP_TRENDS_URL = "https://raw.githubusercontent.com/mdachim/population_mov
 const TP_DATA_URL = "https://raw.githubusercontent.com/mdachim/population_movement/main/tp_data.json";
 const LABELS_URL = "https://raw.githubusercontent.com/mdachim/population_movement/main/labels.json";
 
+const EMBEDDED = window.self !== window.top;
+if(EMBEDDED) document.documentElement.classList.add('embedded');
+// Hosts that resize their iframe to fit can listen for this; the rest ignore it.
+function postEmbedHeight(){
+  if(!EMBEDDED) return;
+  const wrap=document.querySelector('.wrap');
+  const h=Math.ceil(wrap.scrollHeight + 2*parseFloat(getComputedStyle(wrap).paddingTop||0));
+  try{ parent.postMessage({type:'dashboard-height',height:h},'*'); }catch(e){}
+}
+if(EMBEDDED){
+  window.addEventListener('load',postEmbedHeight);
+  window.addEventListener('resize',postEmbedHeight);
+}
+
 document.getElementById('logoDesktop').src = LOGO_URL_DESKTOP;
 document.getElementById('logoMobile').src  = LOGO_URL_MOBILE;
 
@@ -806,6 +832,8 @@ function switchPage(page){
   requestAnimationFrame(()=>{
     if(isPopulation && flowChart) flowChart.resize();
     if(!isPopulation && tpChart) tpChart.resize();
+    document.querySelector('.wrap').scrollTop=0;
+    postEmbedHeight();
   });
 }
 function printDashboard(page){
@@ -1155,6 +1183,7 @@ function setLang(l){
   }
   if(M) render();
   if(TPM.length) renderTP();
+  postEmbedHeight();
 }
 document.querySelectorAll('.lang-btn').forEach(b=>{
   b.addEventListener('click',()=>setLang(b.dataset.lang));
