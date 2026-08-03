@@ -191,6 +191,15 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
 /* Footer */
 .footer{font-size:12px; color:var(--ink-3); text-align:center; padding:8px 0 4px; line-height:1.7}
 
+/* Language switch */
+.lang-switch{display:flex; justify-content:center; padding:2px 0 6px}
+.lang-seg{display:inline-flex; gap:2px; background:#fff; border:1px solid var(--line-strong);
+  border-radius:999px; padding:3px; box-shadow:var(--shadow)}
+.lang-btn{font-family:inherit; font-size:12px; font-weight:700; letter-spacing:.3px; color:var(--ink-3);
+  background:none; border:0; padding:5px 14px; border-radius:999px; cursor:pointer; transition:background .15s,color .15s}
+.lang-btn:hover{color:var(--blue-dark)}
+.lang-btn.active{background:var(--blue); color:#fff}
+
 @media (max-width:860px){
   body{padding:var(--gap)}
   .stay-row{grid-template-columns:1fr}
@@ -338,11 +347,11 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
       <img class="logo logo-desktop" id="logoDesktop" src="https://raw.githubusercontent.com/mdachim/population_movement/main/Vertical%20white.png" alt="UNHCR" onerror="this.style.display='none'">
       <img class="logo logo-mobile" id="logoMobile" src="https://raw.githubusercontent.com/mdachim/population_movement/main/Horizontal%20white.png" alt="UNHCR" onerror="this.style.display='none'">
       <div>
-        <h1>Ukrainian Refugees in Moldova</h1>
-        <div class="sub">Refugee population flows &amp; presence in Moldova · monthly series</div>
+        <h1 data-i18n="h1">Ukrainian Refugees in Moldova</h1>
+        <div class="sub" data-i18n="sub">Refugee population flows &amp; presence in Moldova · monthly series</div>
       </div>
     </div>
-    <div class="asof">Data as of <b id="asof">—</b></div>
+    <div class="asof"><span data-i18n="asOf">Data as of</span> <b id="asof">—</b></div>
   </header>
 
   <nav class="page-tabs" aria-label="Dashboard page">
@@ -354,26 +363,26 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
   <!-- Timeline -->
   <div class="timeline">
     <div>
-      <div class="tl-label">Viewing month</div>
+      <div class="tl-label" data-i18n="viewingMonth">Viewing month</div>
       <div class="tl-month" id="tlMonth">—</div>
     </div>
     <div class="tl-controls">
-      <button class="tl-btn" id="prevBtn" aria-label="Previous month">‹</button>
+      <button class="tl-btn" id="prevBtn" data-i18n-aria="prevMonth" aria-label="Previous month">‹</button>
       <input type="range" id="slider" min="0" max="0" value="0" step="1">
-      <button class="tl-btn" id="nextBtn" aria-label="Next month">›</button>
-      <button class="tl-latest" id="latestBtn">Latest</button>
+      <button class="tl-btn" id="nextBtn" data-i18n-aria="nextMonth" aria-label="Next month">›</button>
+      <button class="tl-latest" id="latestBtn" data-i18n="latest">Latest</button>
     </div>
   </div>
 
   <!-- Staying population — clickable disaggregation -->
-  <div class="sec-title">Ukrainians staying in Moldova — by where they entered</div>
+  <div class="sec-title" data-i18n="secStay">Ukrainians staying in Moldova — by where they entered</div>
   <div class="stay-row">
     <div class="stay-card open" id="cardUkr" data-key="stay_ukraine">
       <div class="stay-head">
-        <div class="stay-cap">Arrived directly from Ukraine
-          <span class="origin">Entered via the Moldova–Ukraine border</span>
+        <div class="stay-cap"><span data-i18n="stayUkrCap">Arrived directly from Ukraine</span>
+          <span class="origin" data-i18n="stayUkrOrigin">Entered via the Moldova–Ukraine border</span>
         </div>
-        <div class="stay-toggle">Breakdown <span class="chev">▾</span></div>
+        <div class="stay-toggle"><span data-i18n="breakdown">Breakdown</span> <span class="chev">▾</span></div>
       </div>
       <div class="stay-value" id="valUkr">—</div>
       <div class="stay-share" id="shareUkr"></div>
@@ -382,10 +391,10 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
 
     <div class="stay-card" id="cardElse" data-key="stay_elsewhere">
       <div class="stay-head">
-        <div class="stay-cap">Arrived from elsewhere
-          <span class="origin">Entered via the Romanian border or by air</span>
+        <div class="stay-cap"><span data-i18n="stayElseCap">Arrived from elsewhere</span>
+          <span class="origin" data-i18n="stayElseOrigin">Entered via the Romanian border or by air</span>
         </div>
-        <div class="stay-toggle">Breakdown <span class="chev">▾</span></div>
+        <div class="stay-toggle"><span data-i18n="breakdown">Breakdown</span> <span class="chev">▾</span></div>
       </div>
       <div class="stay-value" id="valElse">—</div>
       <div class="stay-share" id="shareElse"></div>
@@ -394,39 +403,39 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
   </div>
 
   <!-- Cumulative KPI cards -->
-  <div class="sec-title">Cumulative refugee flows <span id="kpiThru" style="text-transform:none;font-weight:400;color:var(--ink-3)"></span></div>
+  <div class="sec-title"><span data-i18n="secCum">Cumulative refugee flows</span> <span id="kpiThru" style="text-transform:none;font-weight:400;color:var(--ink-3)"></span></div>
   <div class="kpi-row">
     <div class="kpi">
       <div class="kpi-top">
         <div class="kpi-ico"><img src="https://raw.githubusercontent.com/mdachim/population_movement/main/icons/arrival.png" alt="" onerror="this.style.display='none'"></div>
-        <div class="kpi-label">Arrivals · Ukrainians from Ukraine</div>
+        <div class="kpi-label" data-i18n="kpiArrUkr">Arrivals · Ukrainians from Ukraine</div>
       </div>
       <div class="kpi-value" id="kpiArrUkr">—</div>
-      <div class="kpi-note">Entries via Ukraine border</div>
+      <div class="kpi-note" data-i18n="noteArrUkr">Entries via Ukraine border</div>
     </div>
     <div class="kpi">
       <div class="kpi-top">
         <div class="kpi-ico"><img src="https://raw.githubusercontent.com/mdachim/population_movement/main/icons/arrival.png" alt="" onerror="this.style.display='none'"></div>
-        <div class="kpi-label">Arrivals · Ukrainians from elsewhere</div>
+        <div class="kpi-label" data-i18n="kpiArrElse">Arrivals · Ukrainians from elsewhere</div>
       </div>
       <div class="kpi-value" id="kpiArrElse">—</div>
-      <div class="kpi-note">Entries via Romania &amp; air</div>
+      <div class="kpi-note" data-i18n="noteArrElse">Entries via Romania &amp; air</div>
     </div>
     <div class="kpi dep">
       <div class="kpi-top">
         <div class="kpi-ico"><img src="https://raw.githubusercontent.com/mdachim/population_movement/main/icons/departure.png" alt="" onerror="this.style.display='none'"></div>
-        <div class="kpi-label">Departures · Ukrainians to Ukraine</div>
+        <div class="kpi-label" data-i18n="kpiDepUkr">Departures · Ukrainians to Ukraine</div>
       </div>
       <div class="kpi-value" id="kpiDepUkr">—</div>
-      <div class="kpi-note">Exits via Ukraine border</div>
+      <div class="kpi-note" data-i18n="noteDepUkr">Exits via Ukraine border</div>
     </div>
     <div class="kpi dep">
       <div class="kpi-top">
         <div class="kpi-ico"><img src="https://raw.githubusercontent.com/mdachim/population_movement/main/icons/departure.png" alt="" onerror="this.style.display='none'"></div>
-        <div class="kpi-label">Departures · Ukrainians to elsewhere</div>
+        <div class="kpi-label" data-i18n="kpiDepElse">Departures · Ukrainians to elsewhere</div>
       </div>
       <div class="kpi-value" id="kpiDepElse">—</div>
-      <div class="kpi-note">Exits via Romania &amp; air</div>
+      <div class="kpi-note" data-i18n="noteDepElse">Exits via Romania &amp; air</div>
     </div>
   </div>
 
@@ -434,31 +443,28 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
   <div class="chart-card">
     <div class="chart-head">
       <div>
-        <h3>Monthly arrivals &amp; departures with remaining population</h3>
-        <div class="csub">Bars show refugee arrivals and departures each month; the line tracks the refugee population remaining in Moldova. The selected month is highlighted.</div>
+        <h3 data-i18n="chartTitle">Monthly arrivals &amp; departures with remaining population</h3>
+        <div class="csub" data-i18n="chartSub">Bars show refugee arrivals and departures each month; the line tracks the refugee population remaining in Moldova. The selected month is highlighted.</div>
       </div>
       <div class="year-nav">
-        <button class="tl-btn" id="yrPrev" aria-label="Previous year">‹</button>
+        <button class="tl-btn" id="yrPrev" data-i18n-aria="prevYear" aria-label="Previous year">‹</button>
         <span class="yr-label" id="yrLabel">—</span>
-        <button class="tl-btn" id="yrNext" aria-label="Next year">›</button>
-        <button class="tl-latest" id="yrAll">All years</button>
+        <button class="tl-btn" id="yrNext" data-i18n-aria="nextYear" aria-label="Next year">›</button>
+        <button class="tl-latest" id="yrAll" data-i18n="allYears">All years</button>
       </div>
     </div>
     <div class="chart-box"><canvas id="flowChart"></canvas></div>
     <div class="legend">
-      <div class="lg"><span class="sw" style="background:var(--blue)"></span>Arrivals</div>
-      <div class="lg"><span class="sw" style="background:var(--yellow)"></span>Departures</div>
-      <div class="lg"><span class="sw line" style="background:var(--blue-darkest)"></span>Remaining population (trend)</div>
+      <div class="lg"><span class="sw" style="background:var(--blue)"></span><span data-i18n="legArr">Arrivals</span></div>
+      <div class="lg"><span class="sw" style="background:var(--yellow)"></span><span data-i18n="legDep">Departures</span></div>
+      <div class="lg"><span class="sw line" style="background:var(--blue-darkest)"></span><span data-i18n="legRem">Remaining population (trend)</span></div>
     </div>
-    <div class="chart-note" id="chartNote" hidden>* A month marked with <b>*</b> also carries the preceding month(s) that had no separate report — its bar is a combined figure. Hover a bar for details.</div>
+    <div class="chart-note" id="chartNote" data-i18n-html="chartNote" hidden>* A month marked with <b>*</b> also carries the preceding month(s) that had no separate report — its bar is a combined figure. Hover a bar for details.</div>
   </div>
 
-  <div class="footer">
-    <span id="popSource"></span><br>
-    <span id="popMethodology"></span>
-  </div>
-  <div class="page-actions">
-    <button class="print-btn" id="printPopulation" type="button"><span class="print-icon" aria-hidden="true">🖨</span>Print this page</button>
+  <div class="footer" data-i18n-html="footer">
+    Source: cross-border flow records for Ukrainian refugees reported by the Border Police, Mar 2022 – Jun 2026 <br>
+    Figures for the refugee population present are model estimates and are rounded in labels.
   </div>
   </section>
 
@@ -526,6 +532,14 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
     </div>
   </section>
 
+  <!-- Language switch -->
+  <div class="lang-switch">
+    <div class="lang-seg" role="group" data-i18n-aria="langGroup" aria-label="Language">
+      <button type="button" class="lang-btn" data-lang="en">English</button>
+      <button type="button" class="lang-btn" data-lang="ro">Română</button>
+    </div>
+  </div>
+
 </div>
 
 <script>
@@ -542,15 +556,122 @@ const TP_DATA_URL = "https://raw.githubusercontent.com/mdachim/population_moveme
 document.getElementById('logoDesktop').src = LOGO_URL_DESKTOP;
 document.getElementById('logoMobile').src  = LOGO_URL_MOBILE;
 
-let POP_TRENDS_DATA, M, idx, YEARS, chartYear, TP_DATA=null;
+/* ============================================================
+   i18n — English / Romanian. Static text is tagged in the markup
+   with data-i18n (textContent), data-i18n-html (markup) or
+   data-i18n-aria (aria-label); everything built in JS goes
+   through T('key').
+   ============================================================ */
+const I18N = {
+  en:{
+    locale:'en-GB',
+    months:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+    title:'Ukrainian Refugees in Moldova — Population Dashboard',
+    h1:'Ukrainian Refugees in Moldova',
+    sub:'Refugee population flows &amp; presence in Moldova · monthly series',
+    asOf:'Data as of',
+    viewingMonth:'Viewing month',
+    prevMonth:'Previous month', nextMonth:'Next month', latest:'Latest',
+    secStay:'Ukrainians staying in Moldova — by where they entered',
+    stayUkrCap:'Arrived directly from Ukraine',
+    stayUkrOrigin:'Entered via the Moldova–Ukraine border',
+    stayElseCap:'Arrived from elsewhere',
+    stayElseOrigin:'Entered via the Romanian border or by air',
+    breakdown:'Breakdown',
+    women:'Women', men:'Men', girls:'Girls', boys:'Boys',
+    share:(pct,total)=>`${pct}% of all staying · ${total} total`,
+    secCum:'Cumulative refugee flows',
+    thru:label=>`— through ${label}`,
+    kpiArrUkr:'Arrivals · Ukrainians from Ukraine',
+    kpiArrElse:'Arrivals · Ukrainians from elsewhere',
+    kpiDepUkr:'Departures · Ukrainians to Ukraine',
+    kpiDepElse:'Departures · Ukrainians to elsewhere',
+    noteArrUkr:'Entries via Ukraine border',
+    noteArrElse:'Entries via Romania &amp; air',
+    noteDepUkr:'Exits via Ukraine border',
+    noteDepElse:'Exits via Romania &amp; air',
+    chartTitle:'Monthly arrivals &amp; departures with remaining population',
+    chartSub:'Bars show refugee arrivals and departures each month; the line tracks the refugee population remaining in Moldova. The selected month is highlighted.',
+    prevYear:'Previous year', nextYear:'Next year', allYears:'All years', allShort:'All',
+    legArr:'Arrivals', legDep:'Departures', legRem:'Remaining population (trend)',
+    dsArr:'Arrivals', dsDep:'Departures', dsRem:'Remaining population',
+    axisFlows:'Monthly crossings', axisRem:'Remaining',
+    combined:list=>`Combined figure — covers ${list}`,
+    chartNote:'* A month marked with <b>*</b> also carries the preceding month(s) that had no separate report — its bar is a combined figure. Hover a bar for details.',
+    footer:'Source: cross-border flow records for Ukrainian refugees reported by the Border Police, Mar 2022 – Jun 2026 <br>\n    Figures for the refugee population present are model estimates and are rounded in labels.',
+    langGroup:'Language',
+    errBody:"<b>Couldn't load the data.</b> Check that <code>DATA_URL</code> points to a reachable JSON file (raw GitHub URL, with %20 for spaces).",
+    errDetails:'Details: ',
+    errHttp:status=>`HTTP ${status} — could not load data`,
+    errShape:'Data file has no "months" array'
+  },
+  ro:{
+    locale:'ro-RO',
+    months:['ian.','feb.','mar.','apr.','mai','iun.','iul.','aug.','sep.','oct.','noi.','dec.'],
+    title:'Refugiați ucraineni în Moldova — Tablou de bord al populației',
+    h1:'Refugiați ucraineni în Moldova',
+    sub:'Fluxurile și prezența populației de refugiați în Moldova · serie lunară',
+    asOf:'Date la',
+    viewingMonth:'Luna afișată',
+    prevMonth:'Luna precedentă', nextMonth:'Luna următoare', latest:'Ultima lună',
+    secStay:'Ucraineni care rămân în Moldova — după locul intrării',
+    stayUkrCap:'Sosiți direct din Ucraina',
+    stayUkrOrigin:'Intrare prin frontiera Moldova–Ucraina',
+    stayElseCap:'Sosiți din alte țări',
+    stayElseOrigin:'Intrare prin frontiera cu România sau pe cale aeriană',
+    breakdown:'Detaliere',
+    women:'Femei', men:'Bărbați', girls:'Fete', boys:'Băieți',
+    share:(pct,total)=>`${pct}% din totalul persoanelor rămase · ${total} în total`,
+    secCum:'Fluxuri cumulative de refugiați',
+    thru:label=>`— până în ${label}`,
+    kpiArrUkr:'Sosiri · ucraineni din Ucraina',
+    kpiArrElse:'Sosiri · ucraineni din alte țări',
+    kpiDepUkr:'Plecări · ucraineni spre Ucraina',
+    kpiDepElse:'Plecări · ucraineni spre alte țări',
+    noteArrUkr:'Intrări prin frontiera cu Ucraina',
+    noteArrElse:'Intrări prin România și pe cale aeriană',
+    noteDepUkr:'Ieșiri prin frontiera cu Ucraina',
+    noteDepElse:'Ieșiri prin România și pe cale aeriană',
+    chartTitle:'Sosiri și plecări lunare, cu populația rămasă',
+    chartSub:'Barele arată sosirile și plecările refugiaților în fiecare lună; linia urmărește populația de refugiați rămasă în Moldova. Luna selectată este evidențiată.',
+    prevYear:'Anul precedent', nextYear:'Anul următor', allYears:'Toți anii', allShort:'Toți',
+    legArr:'Sosiri', legDep:'Plecări', legRem:'Populația rămasă (tendință)',
+    dsArr:'Sosiri', dsDep:'Plecări', dsRem:'Populația rămasă',
+    axisFlows:'Treceri lunare', axisRem:'Rămași',
+    combined:list=>`Valoare combinată — acoperă ${list}`,
+    chartNote:'* O lună marcată cu <b>*</b> include și luna sau lunile precedente fără raport separat — bara sa este o valoare combinată. Treceți cursorul peste bară pentru detalii.',
+    footer:'Sursa: evidențele fluxurilor transfrontaliere ale refugiaților ucraineni raportate de Poliția de Frontieră, mar. 2022 – iun. 2026 <br>\n    Cifrele privind populația de refugiați prezentă sunt estimări ale modelului și sunt rotunjite în etichete.',
+    langGroup:'Limbă',
+    errBody:'<b>Datele nu au putut fi încărcate.</b> Verificați dacă <code>DATA_URL</code> indică un fișier JSON accesibil (URL raw GitHub, cu %20 pentru spații).',
+    errDetails:'Detalii: ',
+    errHttp:status=>`HTTP ${status} — datele nu au putut fi încărcate`,
+    errShape:'Fișierul de date nu conține lista "months"'
+  }
+};
+const LANGS = Object.keys(I18N);
+let LANG = 'en';
+try{ const saved=localStorage.getItem('dashLang'); if(LANGS.includes(saved)) LANG=saved; }catch(e){}
+
+function T(key, ...args){
+  const v = I18N[LANG][key] ?? I18N.en[key];
+  return typeof v === 'function' ? v(...args) : v;
+}
+// Strings carrying markup (&amp;, <b>) are written as HTML, so decode for textContent.
+const dec = html => { const t=document.createElement('textarea'); t.innerHTML=html; return t.value; };
+
+let DATA, M, idx, YEARS, chartYear, ERRMSG=null;
 const SPAN=[], COVER=[];
 const yearOf = k => parseInt(k.slice(0,4),10);
 
-const fmt = n => Math.round(n).toLocaleString('en-US');
+const fmt = n => Math.round(n).toLocaleString(T('locale'));
+const num = (v,d) => v.toLocaleString(T('locale'),{maximumFractionDigits:d});
 const fmtC = n => { const a=Math.abs(n);
-  if(a>=1e6) return (n/1e6).toFixed(2).replace(/\.?0+$/,'')+'M';
-  if(a>=1e3) return (n/1e3).toFixed(a>=1e5?0:1).replace(/\.0$/,'')+'K';
+  if(a>=1e6) return num(n/1e6,2)+'M';
+  if(a>=1e3) return num(n/1e3,a>=1e5?0:1)+'K';
   return fmt(n); };
+// month labels are built from the key so they follow the active language
+const keyLabel = k => { const [y,mo]=k.split('-').map(Number); return `${T('months')[mo-1]} ${y}`; };
+const monthShort = k => T('months')[parseInt(k.slice(5),10)-1];
 const GC = {women:'#0072BC', men:'#05568B', boys:'#6CD8FD', girls:'#A097E3'};
 
 /* ---------- page navigation ---------- */
@@ -767,7 +888,7 @@ async function bootTP(){
 
 /* ---------- breakdown bars inside a staying card ---------- */
 function renderBreakdown(elId, obj){
-  const rows=[['women','Women'],['men','Men'],['girls','Girls'],['boys','Boys']];
+  const rows=[['women',T('women')],['men',T('men')],['girls',T('girls')],['boys',T('boys')]];
   const max=Math.max(obj.women,obj.men,obj.girls,obj.boys,1);
   const tot=obj.total||1;
   document.getElementById(elId).innerHTML = rows.map(([k,label])=>{
@@ -783,7 +904,7 @@ function renderBreakdown(elId, obj){
 /* ---------- combined-month detection (gaps in reporting) ---------- */
 // SPAN[i] = number of calendar months this data point covers (1 = normal).
 // A gap (e.g. Sep missing) means the next reported month carries the missing month(s) too.
-const MONTHNAMES=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+// COVER holds month KEYS (YYYY-MM); they are formatted at render time in the active language.
 function computeSpans(){
   SPAN.length=0; COVER.length=0;
   M.forEach((m,i)=>{
@@ -793,13 +914,13 @@ function computeSpans(){
     const diff=(y-py)*12+(mo-pmo);           // months since previous report
     SPAN[i]=Math.max(1,diff);
     if(diff>1){
-      const names=[];
+      const keys=[];
       for(let s=diff-1;s>=1;s--){            // the skipped months, in order
         let mm=mo-s, yy=y; while(mm<=0){mm+=12; yy--;}
-        names.push(`${MONTHNAMES[mm-1]} ${yy}`);
+        keys.push(`${yy}-${String(mm).padStart(2,'0')}`);
       }
-      names.push(`${MONTHNAMES[mo-1]} ${y}`);
-      COVER[i]=names;                         // e.g. ['Sep 2025','Oct 2025']
+      keys.push(m.key);
+      COVER[i]=keys;                          // e.g. ['2025-09','2025-10']
     } else COVER[i]=null;
   });
 }
@@ -812,11 +933,11 @@ function buildFlow(){
     data:{
       labels:[],
       datasets:[
-        {type:'bar',label:'Arrivals',data:[],backgroundColor:'#0072BC',
+        {type:'bar',label:T('dsArr'),data:[],backgroundColor:'#0072BC',
          yAxisID:'y',order:3,borderRadius:2,categoryPercentage:.72,barPercentage:.9},
-        {type:'bar',label:'Departures',data:[],backgroundColor:'#FFC740',
+        {type:'bar',label:T('dsDep'),data:[],backgroundColor:'#FFC740',
          yAxisID:'y',order:3,borderRadius:2,categoryPercentage:.72,barPercentage:.9},
-        {type:'line',label:'Remaining population',data:[],yAxisID:'y1',
+        {type:'line',label:T('dsRem'),data:[],yAxisID:'y1',
          borderColor:'#0B3754',backgroundColor:'#0B3754',borderWidth:2.5,
          pointRadius:3.5,pointHoverRadius:7,pointBackgroundColor:'#0B3754',
          pointBorderColor:'#fff',pointBorderWidth:1.5,pointHoverBorderWidth:2.5,
@@ -832,10 +953,10 @@ function buildFlow(){
           bodyFont:{family:'Lato',size:13},footerFont:{family:'Lato',size:12,weight:'400'},
           footerColor:'#CDE3F1',cornerRadius:6,
           callbacks:{
-            title:items=>{ const g=viewGlobal[items[0].dataIndex]; return M[g].label; },
+            title:items=>{ const g=viewGlobal[items[0].dataIndex]; return keyLabel(M[g].key); },
             label:c=>` ${c.dataset.label}: ${fmt(c.parsed.y)}`,
             footer:items=>{ const g=viewGlobal[items[0].dataIndex];
-              return COVER[g] ? `Combined figure — covers ${COVER[g].join(' + ')}` : ''; }
+              return COVER[g] ? T('combined', COVER[g].map(keyLabel).join(' + ')) : ''; }
           }}
       },
       scales:{
@@ -843,10 +964,10 @@ function buildFlow(){
           autoSkip:true,maxTicksLimit:12},border:{color:'#cfd7dd'}},
         y:{position:'left',grid:{color:'#eef2f5'},border:{display:false},
           ticks:{font:{family:'Lato',size:11},color:'#7c858b',callback:v=>fmtC(v)},
-          title:{display:true,text:'Monthly crossings',font:{family:'Lato',size:11,weight:'700'},color:'#4d565c'}},
+          title:{display:true,text:T('axisFlows'),font:{family:'Lato',size:11,weight:'700'},color:'#4d565c'}},
         y1:{position:'right',grid:{display:false},border:{display:false},min:0,
           ticks:{font:{family:'Lato',size:11},color:'#0B3754',callback:v=>fmtC(v)},
-          title:{display:true,text:'Remaining',font:{family:'Lato',size:11,weight:'700'},color:'#0B3754'}}
+          title:{display:true,text:T('axisRem'),font:{family:'Lato',size:11,weight:'700'},color:'#0B3754'}}
       }
     }
   });
@@ -857,7 +978,7 @@ function flowIndices(){
 function updateFlow(){
   const idxs=flowIndices(), single=chartYear!==null;
   viewGlobal=idxs;
-  flowChart.data.labels = idxs.map(i => (single ? M[i].label.slice(0,3) : M[i].label) + (COVER[i] ? ' *' : ''));
+  flowChart.data.labels = idxs.map(i => (single ? monthShort(M[i].key) : keyLabel(M[i].key)) + (COVER[i] ? ' *' : ''));
   const ds=flowChart.data.datasets;
   ds[0].data = idxs.map(i=>M[i].arrivals);
   ds[1].data = idxs.map(i=>M[i].departures);
@@ -866,7 +987,7 @@ function updateFlow(){
   ds[1].backgroundColor = idxs.map(i => i===idx ? '#FFC740' : '#FEE9B3');
   flowChart.update('none');
   const yl=document.getElementById('yrLabel');
-  yl.textContent = chartYear===null ? 'All' : chartYear;
+  yl.textContent = chartYear===null ? T('allShort') : chartYear;
   yl.classList.toggle('all', chartYear===null);
   // year sits before "All years": prev disabled only at first year; next disabled at All (rightmost)
   document.getElementById('yrPrev').disabled = chartYear===YEARS[0];
@@ -879,18 +1000,20 @@ function updateFlow(){
 /* ---------- render everything for current idx ---------- */
 function render(){
   const m=M[idx];
-  document.getElementById('tlMonth').textContent=m.label;
+  document.getElementById('tlMonth').textContent=keyLabel(m.key);
   document.getElementById('slider').value=idx;
+  document.getElementById('asof').textContent=
+    new Date(DATA.updated).toLocaleDateString(T('locale'),{day:'numeric',month:'long',year:'numeric'});
 
   document.getElementById('valUkr').textContent=fmt(m.stay_ukraine.total);
   document.getElementById('valElse').textContent=fmt(m.stay_elsewhere.total);
   const grand=m.stay_ukraine.total+m.stay_elsewhere.total;
-  document.getElementById('shareUkr').textContent=`${(m.stay_ukraine.total/grand*100).toFixed(0)}% of all staying · ${fmt(grand)} total`;
-  document.getElementById('shareElse').textContent=`${(m.stay_elsewhere.total/grand*100).toFixed(0)}% of all staying · ${fmt(grand)} total`;
+  document.getElementById('shareUkr').textContent=T('share',(m.stay_ukraine.total/grand*100).toFixed(0),fmt(grand));
+  document.getElementById('shareElse').textContent=T('share',(m.stay_elsewhere.total/grand*100).toFixed(0),fmt(grand));
   renderBreakdown('bdUkr',m.stay_ukraine);
   renderBreakdown('bdElse',m.stay_elsewhere);
 
-  document.getElementById('kpiThru').textContent=`— through ${m.label}`;
+  document.getElementById('kpiThru').textContent=T('thru',keyLabel(m.key));
   document.getElementById('kpiArrUkr').textContent=fmtC(m.cum_arr_ukraine);
   document.getElementById('kpiArrElse').textContent=fmtC(m.cum_arr_elsewhere);
   document.getElementById('kpiDepUkr').textContent=fmtC(m.cum_dep_ukraine);
@@ -899,13 +1022,36 @@ function render(){
   updateFlow();
 }
 
+/* ---------- language ---------- */
+function applyStatic(){
+  document.documentElement.lang = LANG;
+  document.title = T('title');
+  document.querySelectorAll('[data-i18n]').forEach(el=>{ el.textContent = dec(T(el.dataset.i18n)); });
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{ el.innerHTML = T(el.dataset.i18nHtml); });
+  document.querySelectorAll('[data-i18n-aria]').forEach(el=>{ el.setAttribute('aria-label', T(el.dataset.i18nAria)); });
+  document.querySelectorAll('.lang-btn').forEach(b=>{ b.classList.toggle('active', b.dataset.lang===LANG); });
+  const det=document.getElementById('errDetails');
+  if(det) det.textContent = T('errDetails') + ERRMSG;
+}
+function setLang(l){
+  if(!LANGS.includes(l) || l===LANG) return;
+  LANG = l;
+  try{ localStorage.setItem('dashLang', l); }catch(e){}
+  applyStatic();
+  if(flowChart){                      // retranslate the chart's own text, then repaint
+    const ds=flowChart.data.datasets;
+    ds[0].label=T('dsArr'); ds[1].label=T('dsDep'); ds[2].label=T('dsRem');
+    flowChart.options.scales.y.title.text=T('axisFlows');
+    flowChart.options.scales.y1.title.text=T('axisRem');
+  }
+  if(M) render();
+}
+document.querySelectorAll('.lang-btn').forEach(b=>{
+  b.addEventListener('click',()=>setLang(b.dataset.lang));
+});
+
 /* ---------- wiring ---------- */
 function init(){
-  populationAsOf=POP_TRENDS_DATA.updated;
-  if(activePage==='population') updateHeaderForPage();
-  document.getElementById('popSource').textContent=
-    `Source: ${POP_TRENDS_DATA.meta.source}, ${M[0].label} – ${M[M.length-1].label}`;
-  document.getElementById('popMethodology').textContent=POP_TRENDS_DATA.meta.methodology_note;
   const sl=document.getElementById('slider'); sl.max=M.length-1; sl.value=idx;
   buildFlow(); render();
 
@@ -934,23 +1080,21 @@ function init(){
     c.addEventListener('click',()=>c.classList.toggle('open'));
   });
 }
-async function bootPopulation(){
+async function boot(){
+  applyStatic();
   try{
-    const res = await fetch(POP_TRENDS_URL, {cache:'no-store'});
-    if(!res.ok) throw new Error('HTTP '+res.status+' — could not load data');
-    POP_TRENDS_DATA = await res.json();
-    if(!POP_TRENDS_DATA || !Array.isArray(POP_TRENDS_DATA.months) || !POP_TRENDS_DATA.months.length){
-      throw new Error('Population Trends data file has no "months" array');
-    }
-    if(!POP_TRENDS_DATA.meta?.source || !POP_TRENDS_DATA.meta?.methodology_note){
-      throw new Error('Population Trends data file has no complete "meta" object');
-    }
+    const res = await fetch(DATA_URL, {cache:'no-store'});
+    if(!res.ok) throw new Error(T('errHttp',res.status));
+    DATA = await res.json();
+    if(!DATA || !Array.isArray(DATA.months) || !DATA.months.length) throw new Error(T('errShape'));
   }catch(err){
+    ERRMSG = String(err.message||err);
     document.querySelector('.wrap').insertAdjacentHTML('afterbegin',
       `<div style="background:#FCE2DE;border:1px solid #D25A45;color:#683229;padding:16px 20px;border-radius:10px;margin-bottom:16px;font-size:14px">
-        <b>Couldn't load Population Trends data.</b> Check that <code>POP_TRENDS_URL</code> points to the raw <code>pop_trends.json</code> file.<br>
-        <span style="color:#9C4637">Details: ${String(err.message||err)}</span>
+        <span data-i18n-html="errBody"></span><br>
+        <span id="errDetails" style="color:#9C4637"></span>
       </div>`);
+    applyStatic();
     return;
   }
   M = POP_TRENDS_DATA.months;
