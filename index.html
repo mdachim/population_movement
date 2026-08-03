@@ -57,7 +57,9 @@ body{
 .header .asof{font-size:13px; color:var(--blue-01); white-space:nowrap}
 .header .asof b{color:#fff; font-weight:700}
 .brand{display:flex; align-items:center; gap:18px}
-.logo{height:44px; width:auto; display:block; flex-shrink:0}
+.logo{width:auto; flex-shrink:0}
+.logo-desktop{display:block; height:68px}   /* vertical logo, desktop */
+.logo-mobile{display:none}                  /* horizontal logo hidden on desktop */
 
 /* Timeline */
 .timeline{
@@ -157,7 +159,8 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
   .kpi-row{grid-template-columns:1fr 1fr}
   .header h1{font-size:20px}
   .brand{flex-direction:column; align-items:flex-start; gap:12px}
-  .logo{height:38px}
+  .logo-desktop{display:none}
+  .logo-mobile{display:block; height:56px}   /* horizontal logo, larger on mobile */
 }
 </style>
 </head>
@@ -166,7 +169,8 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
 
   <header class="header">
     <div class="brand">
-      <img class="logo" id="logo" src="https://raw.githubusercontent.com/YOUR-USERNAME/YOUR-REPO/main/Horizontal%20white.png" alt="UNHCR" onerror="this.style.display='none'">
+      <img class="logo logo-desktop" id="logoDesktop" src="https://raw.githubusercontent.com/mdachim/population_movement/main/Vertical%20white.png" alt="UNHCR" onerror="this.style.display='none'">
+      <img class="logo logo-mobile" id="logoMobile" src="https://raw.githubusercontent.com/mdachim/population_movement/main/Horizontal%20white.png" alt="UNHCR" onerror="this.style.display='none'">
       <div>
         <h1>Ukrainian Refugees in Moldova</h1>
         <div class="sub">Refugee population flows &amp; presence in Moldova · monthly series</div>
@@ -278,10 +282,12 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
    Use the raw file URLs. Note: a space in a filename must be
    written as %20 (e.g. "Horizontal white.png" → "Horizontal%20white.png").
    ============================================================ */
-const LOGO_URL = "https://raw.githubusercontent.com/mdachim/population_movement/main/Horizontal%20white.png";
+const LOGO_URL_DESKTOP = "https://raw.githubusercontent.com/mdachim/population_movement/main/Vertical%20white.png";   // vertical logo (desktop)
+const LOGO_URL_MOBILE  = "https://raw.githubusercontent.com/mdachim/population_movement/main/Horizontal%20white.png"; // horizontal logo (mobile)
 const DATA_URL = "https://raw.githubusercontent.com/mdachim/population_movement/main/dash_data.json";
 
-document.getElementById('logo').src = LOGO_URL;
+document.getElementById('logoDesktop').src = LOGO_URL_DESKTOP;
+document.getElementById('logoMobile').src  = LOGO_URL_MOBILE;
 
 let DATA, M, idx, YEARS, chartYear;
 const SPAN=[], COVER=[];
