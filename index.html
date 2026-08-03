@@ -348,15 +348,15 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
       <img class="logo logo-mobile" id="logoMobile" src="https://raw.githubusercontent.com/mdachim/population_movement/main/Horizontal%20white.png" alt="UNHCR" onerror="this.style.display='none'">
       <div>
         <h1 data-i18n="h1">Ukrainian Refugees in Moldova</h1>
-        <div class="sub" data-i18n="sub">Refugee population flows &amp; presence in Moldova · monthly series</div>
+        <div class="sub">Refugee population flows &amp; presence in Moldova · monthly series</div>
       </div>
     </div>
     <div class="asof"><span data-i18n="asOf">Data as of</span> <b id="asof">—</b></div>
   </header>
 
-  <nav class="page-tabs" aria-label="Dashboard page">
-    <button class="page-tab active" id="tabPopulation" type="button" aria-selected="true" aria-controls="populationPage">Population trends</button>
-    <button class="page-tab" id="tabTP" type="button" aria-selected="false" aria-controls="tpPage">Temporary Protection</button>
+  <nav class="page-tabs" data-i18n-aria="tabsAria" aria-label="Dashboard page">
+    <button class="page-tab active" id="tabPopulation" type="button" aria-selected="true" aria-controls="populationPage" data-i18n="tabPop">Population trends</button>
+    <button class="page-tab" id="tabTP" type="button" aria-selected="false" aria-controls="tpPage" data-i18n="tabTP">Temporary Protection</button>
   </nav>
 
   <section class="dashboard-page" id="populationPage">
@@ -467,38 +467,38 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
     Figures for the refugee population present are model estimates and are rounded in labels.
   </div>
   <div class="page-actions">
-    <button class="print-btn" id="printPopulation" type="button"><span class="print-icon" aria-hidden="true">🖨</span>Print this page</button>
+    <button class="print-btn" id="printPopulation" type="button"><span class="print-icon" aria-hidden="true">🖨</span><span data-i18n="printPage">Print this page</span></button>
   </div>
   </section>
 
   <section class="dashboard-page" id="tpPage" hidden>
     <div class="timeline">
       <div>
-        <div class="tl-label">Viewing snapshot</div>
+        <div class="tl-label" data-i18n="viewingSnapshot">Viewing snapshot</div>
         <div class="tl-month" id="tpTlDate">—</div>
       </div>
       <div class="tl-controls">
-        <button class="tl-btn" id="tpPrevBtn" aria-label="Previous snapshot">‹</button>
-        <input type="range" id="tpSlider" min="0" max="0" value="0" step="1" aria-label="Temporary Protection snapshot">
-        <button class="tl-btn" id="tpNextBtn" aria-label="Next snapshot">›</button>
-        <button class="tl-latest" id="tpLatestBtn">Latest</button>
+        <button class="tl-btn" id="tpPrevBtn" data-i18n-aria="prevSnapshot" aria-label="Previous snapshot">‹</button>
+        <input type="range" id="tpSlider" min="0" max="0" value="0" step="1" data-i18n-aria="tpSliderAria" aria-label="Temporary Protection snapshot">
+        <button class="tl-btn" id="tpNextBtn" data-i18n-aria="nextSnapshot" aria-label="Next snapshot">›</button>
+        <button class="tl-latest" id="tpLatestBtn" data-i18n="latest">Latest</button>
       </div>
     </div>
 
-    <div class="sec-title">Temporary Protection registrations <span id="tpKpiThru" style="text-transform:none;font-weight:400;color:var(--ink-3)"></span></div>
+    <div class="sec-title"><span data-i18n="tpSecTitle">Temporary Protection registrations</span> <span id="tpKpiThru" style="text-transform:none;font-weight:400;color:var(--ink-3)"></span></div>
     <div class="kpi-row tp-kpi-row">
       <div class="kpi">
         <div class="kpi-top">
           <div class="kpi-ico" aria-hidden="true"><span style="font-size:21px;font-weight:900;color:var(--blue)">TP</span></div>
-          <div class="kpi-label">Temporary Protection Beneficiaries</div>
+          <div class="kpi-label" data-i18n="tpKpiCum">Temporary Protection Beneficiaries</div>
         </div>
         <div class="kpi-value" id="tpCumulative">—</div>
-        <div class="kpi-note">Cumulative figure as of selected date</div>
+        <div class="kpi-note" data-i18n="tpKpiCumNote">Cumulative figure as of selected date</div>
       </div>
       <div class="kpi tp-trend">
         <div class="kpi-top">
           <div class="kpi-ico" aria-hidden="true"><span style="font-size:23px;font-weight:900;color:#695FBA">↗</span></div>
-          <div class="kpi-label"># of new TP Beneficiaries</div>
+          <div class="kpi-label" data-i18n="tpKpiNew"># of new TP Beneficiaries</div>
         </div>
         <div class="kpi-value" id="tpTrend">—</div>
         <div class="kpi-note" id="tpTrendNote">New registrations in the interval</div>
@@ -508,30 +508,30 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
     <div class="chart-card">
       <div class="chart-head">
         <div>
-          <h3>Temporary Protection cumulative total &amp; registration trend</h3>
-          <div class="csub">The line shows the cumulative total; the filled time series tracks change between reported snapshots. The selected snapshot is highlighted.</div>
+          <h3 data-i18n="tpChartTitle">Temporary Protection cumulative total &amp; registration trend</h3>
+          <div class="csub" data-i18n="tpChartSub">The line shows the cumulative total; the filled time series tracks change between reported snapshots. The selected snapshot is highlighted.</div>
         </div>
         <div class="year-nav">
-          <button class="tl-btn" id="tpYrPrev" aria-label="Previous year">‹</button>
+          <button class="tl-btn" id="tpYrPrev" data-i18n-aria="prevYear" aria-label="Previous year">‹</button>
           <span class="yr-label" id="tpYrLabel">—</span>
-          <button class="tl-btn" id="tpYrNext" aria-label="Next year">›</button>
-          <button class="tl-latest" id="tpYrAll">All years</button>
+          <button class="tl-btn" id="tpYrNext" data-i18n-aria="nextYear" aria-label="Next year">›</button>
+          <button class="tl-latest" id="tpYrAll" data-i18n="allYears">All years</button>
         </div>
       </div>
       <div class="chart-box"><canvas id="tpChart"></canvas></div>
       <div class="legend">
-        <div class="lg"><span class="sw line" style="background:var(--blue)"></span>Temporary Protection Beneficiaries</div>
-        <div class="lg"><span class="sw area"></span># of new TP Beneficiaries (trend)</div>
+        <div class="lg"><span class="sw line" style="background:var(--blue)"></span><span data-i18n="tpLegCum">Temporary Protection Beneficiaries</span></div>
+        <div class="lg"><span class="sw area"></span><span data-i18n="tpLegTrend"># of new TP Beneficiaries (trend)</span></div>
       </div>
-      <div class="chart-note">In February 2026, the Government of the Republic of Moldova announced the extension process of Temporary Protection, which also served as a validation mechanism for those who remain in the country. The exercise was concluded in April 2026, and 47K out of 88k people applied for the extension.</div>
+      <div class="chart-note" data-i18n="tpChartNote">In February 2026, the Government of the Republic of Moldova announced the extension process of Temporary Protection, which also served as a validation mechanism for those who remain in the country. The exercise was concluded in April 2026, and 47K out of 88k people applied for the extension.</div>
     </div>
 
-    <div class="footer">
+    <div class="footer" data-i18n-html="tpFooter">
       Source: <b>IGM</b>, 26 Mar 2023 – 3 Aug 2026.<br>
       Snapshot intervals vary in the source data, particularly near the end of the series.
     </div>
     <div class="page-actions">
-      <button class="print-btn" id="printTP" type="button"><span class="print-icon" aria-hidden="true">🖨</span>Print this page</button>
+      <button class="print-btn" id="printTP" type="button"><span class="print-icon" aria-hidden="true">🖨</span><span data-i18n="printPage">Print this page</span></button>
     </div>
   </section>
 
@@ -607,7 +607,35 @@ const I18N = {
     errBody:"<b>Couldn't load the data.</b> Check that <code>DATA_URL</code> points to a reachable JSON file (raw GitHub URL, with %20 for spaces).",
     errDetails:'Details: ',
     errHttp:'HTTP {status} — could not load data',
-    errShape:'Data file has no "months" array'
+    errShape:'Data file has no "months" array',
+    tabPop:'Population trends', tabTP:'Temporary Protection', tabsAria:'Dashboard page',
+    printPage:'Print this page',
+    tpSub:'Temporary Protection registrations in Moldova · reported snapshots',
+    viewingSnapshot:'Viewing snapshot',
+    prevSnapshot:'Previous snapshot', nextSnapshot:'Next snapshot',
+    tpSliderAria:'Temporary Protection snapshot',
+    tpSecTitle:'Temporary Protection registrations',
+    tpAt:'— at {date}',
+    tpKpiCum:'Temporary Protection Beneficiaries',
+    tpKpiCumNote:'Cumulative figure as of selected date',
+    tpKpiNew:'# of new TP Beneficiaries',
+    tpNoteNew:'New registrations in the reported interval',
+    tpNoteCorr:'Source correction / series rebase',
+    tpChartTitle:'Temporary Protection cumulative total &amp; registration trend',
+    tpChartSub:'The line shows the cumulative total; the filled time series tracks change between reported snapshots. The selected snapshot is highlighted.',
+    tpLegCum:'Temporary Protection Beneficiaries',
+    tpLegTrend:'# of new TP Beneficiaries (trend)',
+    tpChartNote:'In February 2026, the Government of the Republic of Moldova announced the extension process of Temporary Protection, which also served as a validation mechanism for those who remain in the country. The exercise was concluded in April 2026, and 47K out of 88k people applied for the extension.',
+    tpFooter:'Source: <b>IGM</b>, 26 Mar 2023 – 3 Aug 2026.<br>\n      Snapshot intervals vary in the source data, particularly near the end of the series.',
+    tpDsCum:'Cumulative Temporary Protection total',
+    tpDsChange:'Change between snapshots',
+    tpAxisCum:'Cumulative total', tpAxisChange:'Change between snapshots',
+    tpTipCum:' Cumulative total: {value}', tpTipTrend:' Trend: {value}',
+    tpTipCorr:'Source correction: {value} (trend line break)',
+    tpErrHttp:'HTTP {status} — could not load Temporary Protection data',
+    tpErrShape:'TP data file has no "snapshots" array',
+    tpErrSnap:'TP data contains an invalid snapshot',
+    tpErrBody:"<b>Couldn't load Temporary Protection data.</b> Upload <code>tp_data.json</code> to the configured GitHub location.",
   },
   ro:{
     locale:'ro-RO',
@@ -649,7 +677,35 @@ const I18N = {
     errBody:'<b>Datele nu au putut fi încărcate.</b> Verificați dacă <code>DATA_URL</code> indică un fișier JSON accesibil (URL raw GitHub, cu %20 pentru spații).',
     errDetails:'Detalii: ',
     errHttp:'HTTP {status} — datele nu au putut fi încărcate',
-    errShape:'Fișierul de date nu conține lista "months"'
+    errShape:'Fișierul de date nu conține lista "months"',
+    tabPop:'Tendințe ale populației', tabTP:'Protecție temporară', tabsAria:'Pagina tabloului de bord',
+    printPage:'Tipărește această pagină',
+    tpSub:'Înregistrări de protecție temporară în Moldova · situații raportate',
+    viewingSnapshot:'Situația afișată',
+    prevSnapshot:'Situația precedentă', nextSnapshot:'Situația următoare',
+    tpSliderAria:'Situația privind protecția temporară',
+    tpSecTitle:'Înregistrări de protecție temporară',
+    tpAt:'— la {date}',
+    tpKpiCum:'Beneficiari de protecție temporară',
+    tpKpiCumNote:'Cifră cumulativă la data selectată',
+    tpKpiNew:'Nr. de noi beneficiari PT',
+    tpNoteNew:'Înregistrări noi în intervalul raportat',
+    tpNoteCorr:'Corecție a sursei / recalibrarea seriei',
+    tpChartTitle:'Total cumulativ al protecției temporare și tendința înregistrărilor',
+    tpChartSub:'Linia arată totalul cumulativ; seria colorată urmărește variația între situațiile raportate. Situația selectată este evidențiată.',
+    tpLegCum:'Beneficiari de protecție temporară',
+    tpLegTrend:'Nr. de noi beneficiari PT (tendință)',
+    tpChartNote:'În februarie 2026, Guvernul Republicii Moldova a anunțat procesul de prelungire a protecției temporare, care a servit și ca mecanism de validare a persoanelor rămase în țară. Exercițiul s-a încheiat în aprilie 2026, iar 47K din 88k de persoane au solicitat prelungirea.',
+    tpFooter:'Sursa: <b>IGM</b>, 26 mar. 2023 – 3 aug. 2026.<br>\n      Intervalele dintre situații variază în datele sursă, în special spre finalul seriei.',
+    tpDsCum:'Total cumulativ al protecției temporare',
+    tpDsChange:'Variație între situații',
+    tpAxisCum:'Total cumulativ', tpAxisChange:'Variație între situații',
+    tpTipCum:' Total cumulativ: {value}', tpTipTrend:' Tendință: {value}',
+    tpTipCorr:'Corecție a sursei: {value} (întrerupere a liniei de tendință)',
+    tpErrHttp:'HTTP {status} — datele privind protecția temporară nu au putut fi încărcate',
+    tpErrShape:'Fișierul de date PT nu conține lista "snapshots"',
+    tpErrSnap:'Datele PT conțin o situație invalidă',
+    tpErrBody:'<b>Datele privind protecția temporară nu au putut fi încărcate.</b> Încărcați <code>tp_data.json</code> în locația GitHub configurată.',
   }
 };
 const LANGS = Object.keys(I18N);
@@ -683,7 +739,7 @@ async function loadLabels(){
 // Strings carrying markup (&amp;, <b>) are written as HTML, so decode for textContent.
 const dec = html => { const t=document.createElement('textarea'); t.innerHTML=html; return t.value; };
 
-let POP_TRENDS_DATA, TP_DATA=null, M, idx, YEARS, chartYear, ERRMSG=null;
+let POP_TRENDS_DATA, TP_DATA=null, M, idx, YEARS, chartYear, ERRMSG=null, TP_ERRMSG=null;
 const SPAN=[], COVER=[];
 const yearOf = k => parseInt(k.slice(0,4),10);
 
@@ -706,10 +762,10 @@ const formatLongDate = value => new Date(value+'T00:00:00Z').toLocaleDateString(
 function updateHeaderForPage(){
   const sub=document.querySelector('.header .sub');
   if(activePage==='tp'){
-    sub.textContent='Temporary Protection registrations in Moldova · reported snapshots';
+    sub.textContent=dec(T('tpSub'));
     document.getElementById('asof').textContent=TP_DATA ? formatLongDate(TP_DATA.updated) : '—';
   }else{
-    sub.textContent='Refugee population flows & presence in Moldova · monthly series';
+    sub.textContent=dec(T('sub'));
     document.getElementById('asof').textContent=populationAsOf ? formatLongDate(populationAsOf) : '—';
   }
 }
@@ -755,12 +811,10 @@ function initTabs(){
 let TPM=[], TP_YEARS=[], tpIdx=0, tpChartYear=null, tpChart=null, tpViewGlobal=[];
 const tpYearOf=d=>Number(d.date.slice(0,4));
 const formatTPDate=value=>{
-  const date=new Date(value+'T00:00:00Z');
-  return date.toLocaleDateString('en-GB',{
-    day:'numeric',month:'short',year:'numeric',timeZone:'UTC'
-  });
+  const [y,mo,d]=value.split('-').map(Number);
+  return `${d} ${T('months')[mo-1]} ${y}`;
 };
-const fmtSigned=n=>(n>0?'+':'')+Math.round(n).toLocaleString('en-US');
+const fmtSigned=n=>(n>0?'+':'')+fmt(n);
 function tpAxisMonthLabel(value){
   const position=Number(value), globalIndex=tpViewGlobal[position];
   if(globalIndex===undefined) return '';
@@ -769,9 +823,7 @@ function tpAxisMonthLabel(value){
   if(current===previous) return '';
   const year=Number(current.slice(0,4)), month=Number(current.slice(5,7));
   if(tpChartYear===null && position!==0 && (month-1)%3!==0) return '';
-  const monthName=new Date(Date.UTC(year,month-1,1)).toLocaleDateString('en-GB',{
-    month:'short',timeZone:'UTC'
-  });
+  const monthName=T('months')[month-1];
   return tpChartYear===null ? `${monthName} ${year}` : monthName;
 }
 function buildTPChart(){
@@ -781,11 +833,11 @@ function buildTPChart(){
     data:{
       labels:[],
       datasets:[
-        {label:'Cumulative Temporary Protection total',data:[],yAxisID:'y',
+        {label:T('tpDsCum'),data:[],yAxisID:'y',
          borderColor:'#0072BC',backgroundColor:'transparent',borderWidth:2.5,
          fill:false,pointRadius:[],pointHoverRadius:7,pointBackgroundColor:'#0072BC',
          pointBorderColor:'#fff',pointBorderWidth:1.5,tension:.22,order:1},
-        {label:'Change between snapshots',data:[],yAxisID:'y1',
+        {label:T('tpDsChange'),data:[],yAxisID:'y1',
          borderColor:'#A097E3',backgroundColor:'rgba(160,151,227,.22)',borderWidth:2.25,
          fill:'origin',spanGaps:false,pointRadius:[],pointHoverRadius:6,
          pointBackgroundColor:'#A097E3',pointBorderColor:'#fff',pointBorderWidth:1.2,
@@ -804,11 +856,11 @@ function buildTPChart(){
           callbacks:{
             title:items=>formatTPDate(TPM[tpViewGlobal[items[0].dataIndex]].date),
             label:c=>c.datasetIndex===0
-              ? ` Cumulative total: ${fmt(c.parsed.y)}`
-              : ` Trend: ${fmtSigned(c.parsed.y)}`,
+              ? T('tpTipCum',{value:fmt(c.parsed.y)})
+              : T('tpTipTrend',{value:fmtSigned(c.parsed.y)}),
             footer:items=>{
               const raw=TPM[tpViewGlobal[items[0].dataIndex]];
-              return raw.trend<0 ? `Source correction: ${fmtSigned(raw.trend)} (trend line break)` : '';
+              return raw.trend<0 ? T('tpTipCorr',{value:fmtSigned(raw.trend)}) : '';
             }
           }}
       },
@@ -817,10 +869,10 @@ function buildTPChart(){
           maxRotation:0,autoSkip:false,callback:tpAxisMonthLabel},border:{color:'#cfd7dd'}},
         y:{position:'left',min:0,grid:{color:'#eef2f5'},border:{display:false},
           ticks:{font:{family:'Lato',size:11},color:'#0072BC',callback:v=>fmtC(v)},
-          title:{display:true,text:'Cumulative total',font:{family:'Lato',size:11,weight:'700'},color:'#0072BC'}},
+          title:{display:true,text:T('tpAxisCum'),font:{family:'Lato',size:11,weight:'700'},color:'#0072BC'}},
         y1:{position:'right',suggestedMin:0,grid:{display:false},border:{display:false},
           ticks:{font:{family:'Lato',size:11},color:'#695FBA',callback:v=>fmtC(v)},
-          title:{display:true,text:'Change between snapshots',font:{family:'Lato',size:11,weight:'700'},color:'#695FBA'}}
+          title:{display:true,text:T('tpAxisChange'),font:{family:'Lato',size:11,weight:'700'},color:'#695FBA'}}
       }
     }
   });
@@ -839,7 +891,7 @@ function updateTPChart(){
   ds[1].pointRadius=idxs.map(i=>i===tpIdx && TPM[i].trend>=0?5:2);
   tpChart.update('none');
   const yl=document.getElementById('tpYrLabel');
-  yl.textContent=tpChartYear===null?'All':tpChartYear;
+  yl.textContent=tpChartYear===null?T('allShort'):tpChartYear;
   yl.classList.toggle('all',tpChartYear===null);
   document.getElementById('tpYrPrev').disabled=tpChartYear===TP_YEARS[0];
   document.getElementById('tpYrNext').disabled=tpChartYear===null;
@@ -852,10 +904,8 @@ function renderTP(){
   document.getElementById('tpCumulative').textContent=fmt(d.cumulative);
   document.getElementById('tpTrend').textContent=fmtSigned(d.trend);
   document.getElementById('tpTrend').style.color=d.trend<0?'var(--red)':'var(--ink)';
-  document.getElementById('tpTrendNote').textContent=d.trend<0
-    ? 'Source correction / series rebase'
-    : 'New registrations in the reported interval';
-  document.getElementById('tpKpiThru').textContent=`— at ${formatTPDate(d.date)}`;
+  document.getElementById('tpTrendNote').textContent=d.trend<0 ? T('tpNoteCorr') : T('tpNoteNew');
+  document.getElementById('tpKpiThru').textContent=T('tpAt',{date:formatTPDate(d.date)});
   document.getElementById('tpPrevBtn').disabled=tpIdx===0;
   document.getElementById('tpNextBtn').disabled=tpIdx===TPM.length-1;
   updateTPChart();
@@ -883,14 +933,14 @@ function initTP(){
 async function bootTP(){
   try{
     const res=await fetch(TP_DATA_URL,{cache:'no-store'});
-    if(!res.ok) throw new Error('HTTP '+res.status+' — could not load Temporary Protection data');
+    if(!res.ok) throw new Error(T('tpErrHttp',{status:res.status}));
     const payload=await res.json();
     const snapshots=Array.isArray(payload)?payload:payload?.snapshots;
     if(!Array.isArray(snapshots)||!snapshots.length){
-      throw new Error('TP data file has no "snapshots" array');
+      throw new Error(T('tpErrShape'));
     }
     if(snapshots.some(d=>!d?.date||!Number.isFinite(Number(d.cumulative))||!Number.isFinite(Number(d.trend)))){
-      throw new Error('TP data contains an invalid snapshot');
+      throw new Error(T('tpErrSnap'));
     }
     TP_DATA=Array.isArray(payload)
       ? {updated:snapshots[snapshots.length-1].date,snapshots}
@@ -903,11 +953,13 @@ async function bootTP(){
     initTP();
     if(activePage==='tp') updateHeaderForPage();
   }catch(err){
+    TP_ERRMSG = String(err.message||err);
     document.getElementById('tpPage').insertAdjacentHTML('afterbegin',
       `<div style="background:#FCE2DE;border:1px solid #D25A45;color:#683229;padding:16px 20px;border-radius:10px;margin-bottom:16px;font-size:14px">
-        <b>Couldn't load Temporary Protection data.</b> Upload <code>tp_data.json</code> to the configured GitHub location.<br>
-        <span style="color:#9C4637">Details: ${String(err.message||err)}</span>
+        <span data-i18n-html="tpErrBody"></span><br>
+        <span id="tpErrDetails" style="color:#9C4637"></span>
       </div>`);
+    applyStatic();
   }
 }
 
@@ -1056,6 +1108,9 @@ function applyStatic(){
   document.querySelectorAll('.lang-btn').forEach(b=>{ b.classList.toggle('active', b.dataset.lang===LANG); });
   const det=document.getElementById('errDetails');
   if(det) det.textContent = T('errDetails') + ERRMSG;
+  const tpDet=document.getElementById('tpErrDetails');
+  if(tpDet) tpDet.textContent = T('errDetails') + TP_ERRMSG;
+  updateHeaderForPage();
 }
 function setLang(l){
   if(!LANGS.includes(l) || l===LANG) return;
@@ -1068,7 +1123,14 @@ function setLang(l){
     flowChart.options.scales.y.title.text=T('axisFlows');
     flowChart.options.scales.y1.title.text=T('axisRem');
   }
+  if(tpChart){                        // same for the Temporary Protection chart
+    const ds=tpChart.data.datasets;
+    ds[0].label=T('tpDsCum'); ds[1].label=T('tpDsChange');
+    tpChart.options.scales.y.title.text=T('tpAxisCum');
+    tpChart.options.scales.y1.title.text=T('tpAxisChange');
+  }
   if(M) render();
+  if(TPM.length) renderTP();
 }
 document.querySelectorAll('.lang-btn').forEach(b=>{
   b.addEventListener('click',()=>setLang(b.dataset.lang));

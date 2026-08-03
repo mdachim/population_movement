@@ -1,7 +1,8 @@
 {
   "_readme": [
-    "Label mapping for the dashboard. Edit the 'ro' values (or 'en') and reload the page — index.html fetches this file and overrides its built-in labels; anything missing or malformed falls back to the built-in text.",
-    "{pct} {total} {label} {list} {status} are placeholders filled in at runtime — keep them, in any order that reads well.",
+    "Label mapping for the dashboard (both pages). Edit the 'ro' values (or 'en') and reload the page — index.html fetches this file and overrides its built-in labels; anything missing or malformed falls back to the built-in text.",
+    "{pct} {total} {label} {list} {status} {date} {value} are placeholders filled in at runtime — keep them, in any order that reads well.",
+    "Keys starting with tp belong to the Temporary Protection page; the rest to Population trends.",
     "Values ending in 'Body', 'Note' or 'footer' are HTML: <b>, <code> and <br> are kept as markup. Elsewhere &amp; means a literal '&'.",
     "months must stay 12 entries, January first. locale drives number and date formatting."
   ],
@@ -243,6 +244,138 @@
     "errShape": {
       "en": "Data file has no \"months\" array",
       "ro": "Fișierul de date nu conține lista \"months\""
+    },
+    "tabPop": {
+      "en": "Population trends",
+      "ro": "Tendințe ale populației"
+    },
+    "tabTP": {
+      "en": "Temporary Protection",
+      "ro": "Protecție temporară"
+    },
+    "tabsAria": {
+      "en": "Dashboard page",
+      "ro": "Pagina tabloului de bord"
+    },
+    "printPage": {
+      "en": "Print this page",
+      "ro": "Tipărește această pagină"
+    },
+    "tpSub": {
+      "en": "Temporary Protection registrations in Moldova · reported snapshots",
+      "ro": "Înregistrări de protecție temporară în Moldova · situații raportate"
+    },
+    "viewingSnapshot": {
+      "en": "Viewing snapshot",
+      "ro": "Situația afișată"
+    },
+    "prevSnapshot": {
+      "en": "Previous snapshot",
+      "ro": "Situația precedentă"
+    },
+    "nextSnapshot": {
+      "en": "Next snapshot",
+      "ro": "Situația următoare"
+    },
+    "tpSliderAria": {
+      "en": "Temporary Protection snapshot",
+      "ro": "Situația privind protecția temporară"
+    },
+    "tpSecTitle": {
+      "en": "Temporary Protection registrations",
+      "ro": "Înregistrări de protecție temporară"
+    },
+    "tpAt": {
+      "en": "— at {date}",
+      "ro": "— la {date}"
+    },
+    "tpKpiCum": {
+      "en": "Temporary Protection Beneficiaries",
+      "ro": "Beneficiari de protecție temporară"
+    },
+    "tpKpiCumNote": {
+      "en": "Cumulative figure as of selected date",
+      "ro": "Cifră cumulativă la data selectată"
+    },
+    "tpKpiNew": {
+      "en": "# of new TP Beneficiaries",
+      "ro": "Nr. de noi beneficiari PT"
+    },
+    "tpNoteNew": {
+      "en": "New registrations in the reported interval",
+      "ro": "Înregistrări noi în intervalul raportat"
+    },
+    "tpNoteCorr": {
+      "en": "Source correction / series rebase",
+      "ro": "Corecție a sursei / recalibrarea seriei"
+    },
+    "tpChartTitle": {
+      "en": "Temporary Protection cumulative total &amp; registration trend",
+      "ro": "Total cumulativ al protecției temporare și tendința înregistrărilor"
+    },
+    "tpChartSub": {
+      "en": "The line shows the cumulative total; the filled time series tracks change between reported snapshots. The selected snapshot is highlighted.",
+      "ro": "Linia arată totalul cumulativ; seria colorată urmărește variația între situațiile raportate. Situația selectată este evidențiată."
+    },
+    "tpLegCum": {
+      "en": "Temporary Protection Beneficiaries",
+      "ro": "Beneficiari de protecție temporară"
+    },
+    "tpLegTrend": {
+      "en": "# of new TP Beneficiaries (trend)",
+      "ro": "Nr. de noi beneficiari PT (tendință)"
+    },
+    "tpChartNote": {
+      "en": "In February 2026, the Government of the Republic of Moldova announced the extension process of Temporary Protection, which also served as a validation mechanism for those who remain in the country. The exercise was concluded in April 2026, and 47K out of 88k people applied for the extension.",
+      "ro": "În februarie 2026, Guvernul Republicii Moldova a anunțat procesul de prelungire a protecției temporare, care a servit și ca mecanism de validare a persoanelor rămase în țară. Exercițiul s-a încheiat în aprilie 2026, iar 47K din 88k de persoane au solicitat prelungirea."
+    },
+    "tpFooter": {
+      "en": "Source: <b>IGM</b>, 26 Mar 2023 – 3 Aug 2026.<br>\n      Snapshot intervals vary in the source data, particularly near the end of the series.",
+      "ro": "Sursa: <b>IGM</b>, 26 mar. 2023 – 3 aug. 2026.<br>\n      Intervalele dintre situații variază în datele sursă, în special spre finalul seriei."
+    },
+    "tpDsCum": {
+      "en": "Cumulative Temporary Protection total",
+      "ro": "Total cumulativ al protecției temporare"
+    },
+    "tpDsChange": {
+      "en": "Change between snapshots",
+      "ro": "Variație între situații"
+    },
+    "tpAxisCum": {
+      "en": "Cumulative total",
+      "ro": "Total cumulativ"
+    },
+    "tpAxisChange": {
+      "en": "Change between snapshots",
+      "ro": "Variație între situații"
+    },
+    "tpTipCum": {
+      "en": " Cumulative total: {value}",
+      "ro": " Total cumulativ: {value}"
+    },
+    "tpTipTrend": {
+      "en": " Trend: {value}",
+      "ro": " Tendință: {value}"
+    },
+    "tpTipCorr": {
+      "en": "Source correction: {value} (trend line break)",
+      "ro": "Corecție a sursei: {value} (întrerupere a liniei de tendință)"
+    },
+    "tpErrHttp": {
+      "en": "HTTP {status} — could not load Temporary Protection data",
+      "ro": "HTTP {status} — datele privind protecția temporară nu au putut fi încărcate"
+    },
+    "tpErrShape": {
+      "en": "TP data file has no \"snapshots\" array",
+      "ro": "Fișierul de date PT nu conține lista \"snapshots\""
+    },
+    "tpErrSnap": {
+      "en": "TP data contains an invalid snapshot",
+      "ro": "Datele PT conțin o situație invalidă"
+    },
+    "tpErrBody": {
+      "en": "<b>Couldn't load Temporary Protection data.</b> Upload <code>tp_data.json</code> to the configured GitHub location.",
+      "ro": "<b>Datele privind protecția temporară nu au putut fi încărcate.</b> Încărcați <code>tp_data.json</code> în locația GitHub configurată."
     }
   }
 }
