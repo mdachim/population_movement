@@ -1,0 +1,756 @@
+{
+  "source": "TP data.xlsx / weekly_snapshot",
+  "updated": "2026-08-03",
+  "snapshots": [
+    {
+      "date": "2023-03-26",
+      "cumulative": 190,
+      "trend": 190
+    },
+    {
+      "date": "2023-04-02",
+      "cumulative": 415,
+      "trend": 225
+    },
+    {
+      "date": "2023-04-09",
+      "cumulative": 656,
+      "trend": 241
+    },
+    {
+      "date": "2023-04-16",
+      "cumulative": 1070,
+      "trend": 414
+    },
+    {
+      "date": "2023-04-23",
+      "cumulative": 1293,
+      "trend": 223
+    },
+    {
+      "date": "2023-04-30",
+      "cumulative": 1544,
+      "trend": 251
+    },
+    {
+      "date": "2023-05-07",
+      "cumulative": 1792,
+      "trend": 248
+    },
+    {
+      "date": "2023-05-14",
+      "cumulative": 2010,
+      "trend": 218
+    },
+    {
+      "date": "2023-05-21",
+      "cumulative": 2332,
+      "trend": 322
+    },
+    {
+      "date": "2023-05-28",
+      "cumulative": 2677,
+      "trend": 345
+    },
+    {
+      "date": "2023-05-30",
+      "cumulative": 3057,
+      "trend": 380
+    },
+    {
+      "date": "2023-06-05",
+      "cumulative": 4007,
+      "trend": 950
+    },
+    {
+      "date": "2023-06-12",
+      "cumulative": 4599,
+      "trend": 592
+    },
+    {
+      "date": "2023-06-19",
+      "cumulative": 5263,
+      "trend": 664
+    },
+    {
+      "date": "2023-07-02",
+      "cumulative": 6026,
+      "trend": 763
+    },
+    {
+      "date": "2023-07-09",
+      "cumulative": 6767,
+      "trend": 741
+    },
+    {
+      "date": "2023-07-16",
+      "cumulative": 7568,
+      "trend": 801
+    },
+    {
+      "date": "2023-07-23",
+      "cumulative": 8474,
+      "trend": 906
+    },
+    {
+      "date": "2023-07-30",
+      "cumulative": 9619,
+      "trend": 1145
+    },
+    {
+      "date": "2023-08-06",
+      "cumulative": 10747,
+      "trend": 1128
+    },
+    {
+      "date": "2023-08-13",
+      "cumulative": 12112,
+      "trend": 1365
+    },
+    {
+      "date": "2023-08-20",
+      "cumulative": 13258,
+      "trend": 1146
+    },
+    {
+      "date": "2023-08-21",
+      "cumulative": 14382,
+      "trend": 1124
+    },
+    {
+      "date": "2023-08-28",
+      "cumulative": 15191,
+      "trend": 809
+    },
+    {
+      "date": "2023-09-04",
+      "cumulative": 15982,
+      "trend": 791
+    },
+    {
+      "date": "2023-09-11",
+      "cumulative": 16635,
+      "trend": 653
+    },
+    {
+      "date": "2023-09-18",
+      "cumulative": 17405,
+      "trend": 770
+    },
+    {
+      "date": "2023-09-25",
+      "cumulative": 18150,
+      "trend": 745
+    },
+    {
+      "date": "2023-10-02",
+      "cumulative": 18920,
+      "trend": 770
+    },
+    {
+      "date": "2023-10-09",
+      "cumulative": 19693,
+      "trend": 773
+    },
+    {
+      "date": "2023-10-16",
+      "cumulative": 20498,
+      "trend": 805
+    },
+    {
+      "date": "2023-10-23",
+      "cumulative": 21334,
+      "trend": 836
+    },
+    {
+      "date": "2023-10-30",
+      "cumulative": 22058,
+      "trend": 724
+    },
+    {
+      "date": "2023-11-06",
+      "cumulative": 22766,
+      "trend": 708
+    },
+    {
+      "date": "2023-11-13",
+      "cumulative": 23501,
+      "trend": 735
+    },
+    {
+      "date": "2023-11-20",
+      "cumulative": 24266,
+      "trend": 765
+    },
+    {
+      "date": "2023-11-27",
+      "cumulative": 24958,
+      "trend": 692
+    },
+    {
+      "date": "2023-12-04",
+      "cumulative": 25779,
+      "trend": 821
+    },
+    {
+      "date": "2023-12-11",
+      "cumulative": 26382,
+      "trend": 603
+    },
+    {
+      "date": "2023-12-18",
+      "cumulative": 27715,
+      "trend": 1333
+    },
+    {
+      "date": "2023-12-25",
+      "cumulative": 28369,
+      "trend": 654
+    },
+    {
+      "date": "2024-01-01",
+      "cumulative": 29409,
+      "trend": 1040
+    },
+    {
+      "date": "2024-01-09",
+      "cumulative": 30317,
+      "trend": 908
+    },
+    {
+      "date": "2024-01-15",
+      "cumulative": 31255,
+      "trend": 938
+    },
+    {
+      "date": "2024-01-22",
+      "cumulative": 32269,
+      "trend": 1014
+    },
+    {
+      "date": "2024-01-29",
+      "cumulative": 33521,
+      "trend": 1252
+    },
+    {
+      "date": "2024-02-05",
+      "cumulative": 34745,
+      "trend": 1224
+    },
+    {
+      "date": "2024-02-12",
+      "cumulative": 35871,
+      "trend": 1126
+    },
+    {
+      "date": "2024-02-19",
+      "cumulative": 36924,
+      "trend": 1053
+    },
+    {
+      "date": "2024-02-26",
+      "cumulative": 37940,
+      "trend": 1016
+    },
+    {
+      "date": "2024-03-04",
+      "cumulative": 39178,
+      "trend": 1238
+    },
+    {
+      "date": "2024-03-11",
+      "cumulative": 40365,
+      "trend": 1187
+    },
+    {
+      "date": "2024-03-18",
+      "cumulative": 41325,
+      "trend": 960
+    },
+    {
+      "date": "2024-03-25",
+      "cumulative": 42266,
+      "trend": 941
+    },
+    {
+      "date": "2024-04-01",
+      "cumulative": 43089,
+      "trend": 823
+    },
+    {
+      "date": "2024-04-08",
+      "cumulative": 44028,
+      "trend": 939
+    },
+    {
+      "date": "2024-04-15",
+      "cumulative": 44784,
+      "trend": 756
+    },
+    {
+      "date": "2024-05-02",
+      "cumulative": 46048,
+      "trend": 1264
+    },
+    {
+      "date": "2024-05-07",
+      "cumulative": 46358,
+      "trend": 310
+    },
+    {
+      "date": "2024-05-14",
+      "cumulative": 47087,
+      "trend": 729
+    },
+    {
+      "date": "2024-05-21",
+      "cumulative": 47999,
+      "trend": 912
+    },
+    {
+      "date": "2024-05-26",
+      "cumulative": 48512,
+      "trend": 513
+    },
+    {
+      "date": "2024-06-02",
+      "cumulative": 49227,
+      "trend": 715
+    },
+    {
+      "date": "2024-06-09",
+      "cumulative": 49946,
+      "trend": 719
+    },
+    {
+      "date": "2024-06-16",
+      "cumulative": 50634,
+      "trend": 688
+    },
+    {
+      "date": "2024-06-23",
+      "cumulative": 51314,
+      "trend": 680
+    },
+    {
+      "date": "2024-06-30",
+      "cumulative": 52159,
+      "trend": 845
+    },
+    {
+      "date": "2024-07-07",
+      "cumulative": 52769,
+      "trend": 610
+    },
+    {
+      "date": "2024-07-14",
+      "cumulative": 53450,
+      "trend": 681
+    },
+    {
+      "date": "2024-07-21",
+      "cumulative": 54147,
+      "trend": 697
+    },
+    {
+      "date": "2024-07-28",
+      "cumulative": 54900,
+      "trend": 753
+    },
+    {
+      "date": "2024-08-04",
+      "cumulative": 55620,
+      "trend": 720
+    },
+    {
+      "date": "2024-08-11",
+      "cumulative": 56323,
+      "trend": 703
+    },
+    {
+      "date": "2024-08-18",
+      "cumulative": 56978,
+      "trend": 655
+    },
+    {
+      "date": "2024-08-25",
+      "cumulative": 57611,
+      "trend": 633
+    },
+    {
+      "date": "2024-09-01",
+      "cumulative": 58195,
+      "trend": 584
+    },
+    {
+      "date": "2024-09-08",
+      "cumulative": 58754,
+      "trend": 559
+    },
+    {
+      "date": "2024-09-15",
+      "cumulative": 59256,
+      "trend": 502
+    },
+    {
+      "date": "2024-09-22",
+      "cumulative": 59764,
+      "trend": 508
+    },
+    {
+      "date": "2024-09-29",
+      "cumulative": 60209,
+      "trend": 445
+    },
+    {
+      "date": "2024-10-07",
+      "cumulative": 60711,
+      "trend": 502
+    },
+    {
+      "date": "2024-10-14",
+      "cumulative": 61181,
+      "trend": 470
+    },
+    {
+      "date": "2024-10-21",
+      "cumulative": 61668,
+      "trend": 487
+    },
+    {
+      "date": "2024-10-28",
+      "cumulative": 62196,
+      "trend": 528
+    },
+    {
+      "date": "2024-11-04",
+      "cumulative": 62698,
+      "trend": 502
+    },
+    {
+      "date": "2024-11-11",
+      "cumulative": 63438,
+      "trend": 740
+    },
+    {
+      "date": "2024-11-18",
+      "cumulative": 63621,
+      "trend": 183
+    },
+    {
+      "date": "2024-11-25",
+      "cumulative": 64037,
+      "trend": 416
+    },
+    {
+      "date": "2024-12-02",
+      "cumulative": 64466,
+      "trend": 429
+    },
+    {
+      "date": "2024-12-09",
+      "cumulative": 64891,
+      "trend": 425
+    },
+    {
+      "date": "2024-12-16",
+      "cumulative": 65325,
+      "trend": 434
+    },
+    {
+      "date": "2024-12-23",
+      "cumulative": 65803,
+      "trend": 478
+    },
+    {
+      "date": "2024-12-30",
+      "cumulative": 66224,
+      "trend": 421
+    },
+    {
+      "date": "2025-01-06",
+      "cumulative": 66778,
+      "trend": 554
+    },
+    {
+      "date": "2025-01-13",
+      "cumulative": 66920,
+      "trend": 142
+    },
+    {
+      "date": "2025-01-20",
+      "cumulative": 67367,
+      "trend": 447
+    },
+    {
+      "date": "2025-01-27",
+      "cumulative": 67756,
+      "trend": 389
+    },
+    {
+      "date": "2025-01-31",
+      "cumulative": 68187,
+      "trend": 431
+    },
+    {
+      "date": "2025-02-10",
+      "cumulative": 68631,
+      "trend": 444
+    },
+    {
+      "date": "2025-02-17",
+      "cumulative": 69031,
+      "trend": 400
+    },
+    {
+      "date": "2025-02-24",
+      "cumulative": 69432,
+      "trend": 401
+    },
+    {
+      "date": "2025-03-10",
+      "cumulative": 70252,
+      "trend": 820
+    },
+    {
+      "date": "2025-03-17",
+      "cumulative": 70626,
+      "trend": 374
+    },
+    {
+      "date": "2025-03-24",
+      "cumulative": 70969,
+      "trend": 343
+    },
+    {
+      "date": "2025-04-07",
+      "cumulative": 71714,
+      "trend": 745
+    },
+    {
+      "date": "2025-04-14",
+      "cumulative": 72094,
+      "trend": 380
+    },
+    {
+      "date": "2025-04-22",
+      "cumulative": 72403,
+      "trend": 309
+    },
+    {
+      "date": "2025-04-28",
+      "cumulative": 72705,
+      "trend": 302
+    },
+    {
+      "date": "2025-05-05",
+      "cumulative": 72943,
+      "trend": 238
+    },
+    {
+      "date": "2025-05-12",
+      "cumulative": 73312,
+      "trend": 369
+    },
+    {
+      "date": "2025-05-19",
+      "cumulative": 73589,
+      "trend": 277
+    },
+    {
+      "date": "2025-05-26",
+      "cumulative": 74114,
+      "trend": 525
+    },
+    {
+      "date": "2025-06-02",
+      "cumulative": 74408,
+      "trend": 294
+    },
+    {
+      "date": "2025-06-09",
+      "cumulative": 74854,
+      "trend": 446
+    },
+    {
+      "date": "2025-06-16",
+      "cumulative": 75149,
+      "trend": 295
+    },
+    {
+      "date": "2025-06-23",
+      "cumulative": 75474,
+      "trend": 325
+    },
+    {
+      "date": "2025-06-30",
+      "cumulative": 75832,
+      "trend": 358
+    },
+    {
+      "date": "2025-07-07",
+      "cumulative": 76380,
+      "trend": 548
+    },
+    {
+      "date": "2025-07-14",
+      "cumulative": 76630,
+      "trend": 250
+    },
+    {
+      "date": "2025-07-21",
+      "cumulative": 77141,
+      "trend": 511
+    },
+    {
+      "date": "2025-07-28",
+      "cumulative": 77573,
+      "trend": 432
+    },
+    {
+      "date": "2025-08-04",
+      "cumulative": 77999,
+      "trend": 426
+    },
+    {
+      "date": "2025-08-11",
+      "cumulative": 78422,
+      "trend": 423
+    },
+    {
+      "date": "2025-08-18",
+      "cumulative": 78825,
+      "trend": 403
+    },
+    {
+      "date": "2025-08-25",
+      "cumulative": 79308,
+      "trend": 483
+    },
+    {
+      "date": "2025-09-01",
+      "cumulative": 79628,
+      "trend": 320
+    },
+    {
+      "date": "2025-09-08",
+      "cumulative": 80097,
+      "trend": 469
+    },
+    {
+      "date": "2025-09-15",
+      "cumulative": 80524,
+      "trend": 427
+    },
+    {
+      "date": "2025-09-22",
+      "cumulative": 80996,
+      "trend": 472
+    },
+    {
+      "date": "2025-09-29",
+      "cumulative": 81452,
+      "trend": 456
+    },
+    {
+      "date": "2025-10-06",
+      "cumulative": 81876,
+      "trend": 424
+    },
+    {
+      "date": "2025-10-13",
+      "cumulative": 82278,
+      "trend": 402
+    },
+    {
+      "date": "2025-10-21",
+      "cumulative": 82766,
+      "trend": 488
+    },
+    {
+      "date": "2025-10-27",
+      "cumulative": 83042,
+      "trend": 276
+    },
+    {
+      "date": "2025-11-03",
+      "cumulative": 83394,
+      "trend": 352
+    },
+    {
+      "date": "2025-11-10",
+      "cumulative": 83815,
+      "trend": 421
+    },
+    {
+      "date": "2025-11-17",
+      "cumulative": 84323,
+      "trend": 508
+    },
+    {
+      "date": "2025-11-24",
+      "cumulative": 84640,
+      "trend": 317
+    },
+    {
+      "date": "2025-12-01",
+      "cumulative": 85051,
+      "trend": 411
+    },
+    {
+      "date": "2025-12-08",
+      "cumulative": 85494,
+      "trend": 443
+    },
+    {
+      "date": "2025-12-22",
+      "cumulative": 86251,
+      "trend": 757
+    },
+    {
+      "date": "2025-12-29",
+      "cumulative": 86585,
+      "trend": 334
+    },
+    {
+      "date": "2026-01-12",
+      "cumulative": 87272,
+      "trend": 687
+    },
+    {
+      "date": "2026-01-19",
+      "cumulative": 87616,
+      "trend": 344
+    },
+    {
+      "date": "2026-01-26",
+      "cumulative": 87965,
+      "trend": 349
+    },
+    {
+      "date": "2026-04-27",
+      "cumulative": 47599,
+      "trend": -40366
+    },
+    {
+      "date": "2026-07-09",
+      "cumulative": 53964,
+      "trend": 6365
+    },
+    {
+      "date": "2026-07-20",
+      "cumulative": 54534,
+      "trend": 570
+    },
+    {
+      "date": "2026-07-27",
+      "cumulative": 54908,
+      "trend": 374
+    },
+    {
+      "date": "2026-08-03",
+      "cumulative": 55478,
+      "trend": 570
+    }
+  ]
+}

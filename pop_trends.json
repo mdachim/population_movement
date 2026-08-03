@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "source": "Cross-border flow records for Ukrainian refugees reported by the Border Police",
+    "methodology_note": "Figures for the refugee population present are model estimates and are rounded in labels."
+  },
   "updated": "2026-06-30",
   "months": [
     {

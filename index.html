@@ -61,6 +61,35 @@ body{
 .logo-desktop{display:block; height:68px}   /* vertical logo, desktop */
 .logo-mobile{display:none}                  /* horizontal logo hidden on desktop */
 
+/* Page navigation */
+.page-tabs{
+  background:#dfe7ed; border-radius:var(--radius); padding:5px;
+  display:grid; grid-template-columns:1fr 1fr; gap:5px; margin-bottom:12px;
+  box-shadow:inset 0 0 0 1px rgba(11,55,84,.04);
+}
+.page-tab{
+  border:0; border-radius:8px; padding:11px 16px; cursor:pointer;
+  background:transparent; color:var(--ink-2); font:700 14px/1.2 'Lato',sans-serif;
+  transition:background .16s,color .16s,box-shadow .16s;
+}
+.page-tab:hover{background:rgba(255,255,255,.65); color:var(--blue-dark)}
+.page-tab.active{
+  background:var(--blue); color:#fff; box-shadow:0 2px 5px rgba(5,86,139,.22);
+}
+.page-tab:focus-visible{outline:3px solid var(--blue-02); outline-offset:2px}
+.dashboard-page[hidden]{display:none}
+.page-actions{display:flex;justify-content:flex-end;margin:16px 0 0}
+.print-btn{
+  border:1px solid var(--blue); background:#fff; color:var(--blue-dark);
+  border-radius:8px; padding:9px 14px; cursor:pointer;
+  font:700 13px/1.2 'Lato',sans-serif; transition:.15s;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+}
+.print-icon{font-size:16px;line-height:1}
+.print-btn:hover{background:var(--blue-01);border-color:var(--blue-dark)}
+.print-btn:disabled{opacity:.45;cursor:not-allowed;background:#fff}
+.print-btn:focus-visible{outline:3px solid var(--blue-02);outline-offset:2px}
+
 /* Timeline */
 .timeline{
   background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow);
@@ -123,6 +152,9 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
 .kpi{background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px 20px;
   border-left:4px solid var(--blue); display:flex; flex-direction:column}
 .kpi.dep{border-left-color:var(--yellow)}
+.kpi.tp-trend{border-left-color:var(--purple)}
+.kpi.tp-trend .kpi-ico{background:#E7E4F8}
+.tp-kpi-row{grid-template-columns:repeat(2,minmax(0,1fr))}
 .kpi-top{display:flex; align-items:flex-start; gap:12px}
 .kpi-ico{flex:0 0 auto; width:38px; height:38px; border-radius:8px; background:var(--blue-01);
   display:flex; align-items:center; justify-content:center}
@@ -142,6 +174,7 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
 .lg{display:flex; align-items:center; gap:7px; font-size:13px; color:var(--ink-2)}
 .lg .sw{width:14px; height:14px; border-radius:3px}
 .lg .sw.line{height:3px; border-radius:2px; width:18px}
+.lg .sw.area{border:2px solid var(--purple); background:rgba(160,151,227,.22)}
 
 /* Chart card header with year nav */
 .chart-head{display:flex; justify-content:space-between; align-items:flex-start; gap:16px; margin-bottom:16px; flex-wrap:wrap}
@@ -170,6 +203,132 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
   .logo-desktop{display:none}
   .logo-mobile{display:block; height:56px}   /* horizontal logo, larger on mobile */
 }
+@media (max-width:560px){
+  .page-tab{padding:10px 8px;font-size:13px}
+  .page-actions{margin-top:12px}
+  .print-btn{width:100%}
+  .tp-kpi-row{grid-template-columns:1fr}
+  .timeline .tl-controls{min-width:100%;gap:9px}
+  .timeline{padding:16px}
+  .chart-box{height:300px}
+}
+@page{size:A4 portrait;margin:10mm}
+@media print{
+  html,body{background:#fff!important;font-size:11px}
+  body{padding:0;color:var(--ink)}
+  body *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .wrap{width:100%;max-width:none;margin:0}
+  .page-tabs,.page-actions,.timeline .tl-controls,
+  .year-nav .tl-btn,.year-nav .tl-latest{display:none!important}
+  body[data-print-page="population"] #tpPage,
+  body[data-print-page="tp"] #populationPage{display:none!important}
+  .dashboard-page[hidden]{display:none!important}
+  .header{
+    border-radius:3mm;padding:5mm 6mm;margin-bottom:4mm;
+    flex-wrap:nowrap;gap:4mm;break-inside:avoid;
+  }
+  .header h1{font-size:17pt}
+  .header .sub,.header .asof{font-size:8.5pt}
+  .brand{flex-direction:row;align-items:center;gap:4mm}
+  .logo-desktop{display:block;height:13mm}
+  .logo-mobile{display:none}
+  .timeline{
+    padding:4mm 5mm;margin-bottom:4mm;border:1px solid var(--line);
+    box-shadow:none;border-radius:2mm;break-inside:avoid;
+  }
+  .timeline .tl-label{font-size:8pt}
+  .timeline .tl-month{font-size:15pt;min-width:0}
+  .sec-title{font-size:8.5pt;margin:0 1mm 2.5mm;break-after:avoid}
+  .stay-row{
+    grid-template-columns:1fr!important;gap:4mm;margin-bottom:4mm;
+    break-inside:avoid;
+  }
+  .stay-card{padding:4mm;border:1px solid var(--line);box-shadow:none;border-radius:2mm}
+  .stay-card.open .breakdown{
+    display:block!important;max-height:none!important;overflow:visible!important;
+    margin-top:4mm!important;
+  }
+  .stay-card:not(.open) .breakdown{display:none!important}
+  .bd-inner{padding-top:3mm}
+  .bd-row{grid-template-columns:18mm 1fr 25mm;gap:3mm;margin-bottom:2.5mm}
+  .bd-name,.bd-num{font-size:8pt}
+  .bd-track{height:4mm}
+  .stay-toggle{display:none}
+  .stay-cap{font-size:9pt}
+  .stay-cap .origin,.stay-share{font-size:8pt}
+  .stay-value{font-size:25pt;margin-top:1mm}
+  .kpi-row{
+    grid-template-columns:repeat(2,1fr)!important;gap:3mm;margin-bottom:4mm;
+    break-inside:avoid;
+  }
+  .tp-kpi-row{grid-template-columns:repeat(2,1fr)!important}
+  .kpi{padding:4mm;border-radius:2mm;box-shadow:none;border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .kpi-top{gap:3mm}
+  .kpi-ico{width:9mm;height:9mm;border-radius:1.5mm}
+  .kpi-ico img{width:5.5mm;height:5.5mm}
+  .kpi-label{font-size:8pt;min-height:0}
+  .kpi-value{font-size:18pt;padding-top:2.5mm}
+  .kpi-note{font-size:8pt;margin-top:1.5mm}
+  .chart-card{
+    padding:5mm;margin-bottom:4mm;border:1px solid var(--line);
+    box-shadow:none;border-radius:2mm;break-inside:avoid;
+  }
+  .chart-head{margin-bottom:4mm;flex-wrap:wrap}
+  .chart-card h3{font-size:11pt}
+  .chart-card .csub{font-size:8.5pt;margin-bottom:0}
+  .year-nav{align-items:flex-start}
+  .yr-label{font-size:9pt;min-width:0}
+  .chart-box{height:92mm!important;min-height:92mm;overflow:hidden}
+  .chart-box canvas{width:100%!important;height:100%!important;max-height:100%!important}
+  .legend{
+    position:relative;z-index:2;clear:both;background:#fff;
+    gap:5mm;margin-top:4mm;padding-top:3mm;break-inside:avoid;
+  }
+  .lg{font-size:8.5pt}
+  .chart-note{font-size:8pt;margin-top:3mm;padding-top:3mm}
+  .footer{font-size:8pt;padding:2mm 0 0}
+
+  /* Population Trends is tuned to remain on one portrait A4 sheet. */
+  body[data-print-page="population"] #populationPage{zoom:.97}
+  body[data-print-page="population"] .header{padding:3.5mm 5mm;margin-bottom:3mm}
+  body[data-print-page="population"] .timeline{padding:3mm 4mm;margin-bottom:3mm}
+  body[data-print-page="population"] .sec-title{margin-bottom:2mm}
+  body[data-print-page="population"] .stay-row{
+    grid-template-columns:repeat(2,1fr)!important;gap:2.5mm;margin-bottom:3mm;
+  }
+  body[data-print-page="population"] .stay-card{padding:3mm}
+  body[data-print-page="population"] .stay-card.open .breakdown{margin-top:2.5mm!important}
+  body[data-print-page="population"] .bd-inner{padding-top:2mm}
+  body[data-print-page="population"] .bd-row{
+    grid-template-columns:14mm 1fr 21mm;gap:2mm;margin-bottom:1.7mm;
+  }
+  body[data-print-page="population"] .bd-name,
+  body[data-print-page="population"] .bd-num{font-size:7.5pt}
+  body[data-print-page="population"] .bd-track{height:3.2mm}
+  body[data-print-page="population"] .stay-cap{font-size:8pt}
+  body[data-print-page="population"] .stay-cap .origin,
+  body[data-print-page="population"] .stay-share{font-size:7pt}
+  body[data-print-page="population"] .stay-value{font-size:21pt}
+  body[data-print-page="population"] .kpi-row{
+    grid-template-columns:repeat(2,1fr)!important;gap:2.5mm;margin-bottom:3mm;
+  }
+  body[data-print-page="population"] .kpi{padding:3mm}
+  body[data-print-page="population"] .kpi-ico{width:8mm;height:8mm}
+  body[data-print-page="population"] .kpi-label{font-size:7.5pt}
+  body[data-print-page="population"] .kpi-value{font-size:16pt;padding-top:2mm}
+  body[data-print-page="population"] .kpi-note{font-size:7pt;margin-top:1mm}
+  body[data-print-page="population"] .chart-card{padding:3mm 4mm;margin-bottom:1mm}
+  body[data-print-page="population"] .chart-head{margin-bottom:2mm}
+  body[data-print-page="population"] .chart-card .csub{font-size:7.5pt}
+  body[data-print-page="population"] .chart-box{height:60mm!important;min-height:60mm}
+  body[data-print-page="population"] .legend{margin-top:2mm;padding-top:2mm;gap:4mm}
+  body[data-print-page="population"] .lg{font-size:7.5pt}
+  body[data-print-page="population"] .chart-note{font-size:7pt;margin-top:2mm;padding-top:2mm}
+  body[data-print-page="population"] .footer{
+    font-size:7pt;line-height:1.35;padding-top:.5mm;margin-top:0;
+    break-inside:avoid;page-break-inside:avoid;
+  }
+}
 </style>
 </head>
 <body>
@@ -187,6 +346,12 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
     <div class="asof">Data as of <b id="asof">—</b></div>
   </header>
 
+  <nav class="page-tabs" aria-label="Dashboard page">
+    <button class="page-tab active" id="tabPopulation" type="button" aria-selected="true" aria-controls="populationPage">Population trends</button>
+    <button class="page-tab" id="tabTP" type="button" aria-selected="false" aria-controls="tpPage">Temporary Protection</button>
+  </nav>
+
+  <section class="dashboard-page" id="populationPage">
   <!-- Timeline -->
   <div class="timeline">
     <div>
@@ -290,26 +455,95 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
   </div>
 
   <div class="footer">
-    Source: cross-border flow records for Ukrainian refugees reported by the Border Police, Mar 2022 – Jun 2026 <br>
-    Figures for the refugee population present are model estimates and are rounded in labels.
+    <span id="popSource"></span><br>
+    <span id="popMethodology"></span>
   </div>
+  <div class="page-actions">
+    <button class="print-btn" id="printPopulation" type="button"><span class="print-icon" aria-hidden="true">🖨</span>Print this page</button>
+  </div>
+  </section>
+
+  <section class="dashboard-page" id="tpPage" hidden>
+    <div class="timeline">
+      <div>
+        <div class="tl-label">Viewing snapshot</div>
+        <div class="tl-month" id="tpTlDate">—</div>
+      </div>
+      <div class="tl-controls">
+        <button class="tl-btn" id="tpPrevBtn" aria-label="Previous snapshot">‹</button>
+        <input type="range" id="tpSlider" min="0" max="0" value="0" step="1" aria-label="Temporary Protection snapshot">
+        <button class="tl-btn" id="tpNextBtn" aria-label="Next snapshot">›</button>
+        <button class="tl-latest" id="tpLatestBtn">Latest</button>
+      </div>
+    </div>
+
+    <div class="sec-title">Temporary Protection registrations <span id="tpKpiThru" style="text-transform:none;font-weight:400;color:var(--ink-3)"></span></div>
+    <div class="kpi-row tp-kpi-row">
+      <div class="kpi">
+        <div class="kpi-top">
+          <div class="kpi-ico" aria-hidden="true"><span style="font-size:21px;font-weight:900;color:var(--blue)">TP</span></div>
+          <div class="kpi-label">Cumulative Temporary Protection total</div>
+        </div>
+        <div class="kpi-value" id="tpCumulative">—</div>
+        <div class="kpi-note">Total recorded at the selected snapshot</div>
+      </div>
+      <div class="kpi tp-trend">
+        <div class="kpi-top">
+          <div class="kpi-ico" aria-hidden="true"><span style="font-size:23px;font-weight:900;color:#695FBA">↗</span></div>
+          <div class="kpi-label">Change since previous snapshot</div>
+        </div>
+        <div class="kpi-value" id="tpTrend">—</div>
+        <div class="kpi-note" id="tpTrendNote">New registrations in the interval</div>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-head">
+        <div>
+          <h3>Temporary Protection cumulative total &amp; registration trend</h3>
+          <div class="csub">The line shows the cumulative total; the filled time series tracks change between reported snapshots. The selected snapshot is highlighted.</div>
+        </div>
+        <div class="year-nav">
+          <button class="tl-btn" id="tpYrPrev" aria-label="Previous year">‹</button>
+          <span class="yr-label" id="tpYrLabel">—</span>
+          <button class="tl-btn" id="tpYrNext" aria-label="Next year">›</button>
+          <button class="tl-latest" id="tpYrAll">All years</button>
+        </div>
+      </div>
+      <div class="chart-box"><canvas id="tpChart"></canvas></div>
+      <div class="legend">
+        <div class="lg"><span class="sw line" style="background:var(--blue)"></span>Cumulative Temporary Protection total</div>
+        <div class="lg"><span class="sw area"></span>Change between snapshots (trend)</div>
+      </div>
+      <div class="chart-note">The source series includes a downward correction on 27 April 2026. It remains visible in the cumulative area; the correction is treated as a series break in the registration-trend line so ordinary changes remain readable.</div>
+    </div>
+
+    <div class="footer">
+      Source: <b>TP data.xlsx</b>, worksheet <b>weekly_snapshot</b>, 26 Mar 2023 – 3 Aug 2026.<br>
+      Snapshot intervals vary in the source data, particularly near the end of the series.
+    </div>
+    <div class="page-actions">
+      <button class="print-btn" id="printTP" type="button"><span class="print-icon" aria-hidden="true">🖨</span>Print this page</button>
+    </div>
+  </section>
 
 </div>
 
 <script>
 /* ============================================================
-   CONFIG — edit these two URLs after uploading to GitHub.
+   CONFIG — edit these three URLs after uploading to GitHub.
    Use the raw file URLs. Note: a space in a filename must be
    written as %20 (e.g. "Horizontal white.png" → "Horizontal%20white.png").
    ============================================================ */
 const LOGO_URL_DESKTOP = "https://raw.githubusercontent.com/mdachim/population_movement/main/Vertical%20white.png";   // vertical logo (desktop)
 const LOGO_URL_MOBILE  = "https://raw.githubusercontent.com/mdachim/population_movement/main/Horizontal%20white.png"; // horizontal logo (mobile)
-const DATA_URL = "https://raw.githubusercontent.com/mdachim/population_movement/main/dash_data.json";
+const POP_TRENDS_URL = "https://raw.githubusercontent.com/mdachim/population_movement/main/pop_trends.json";
+const TP_DATA_URL = "https://raw.githubusercontent.com/mdachim/population_movement/main/tp_data.json";
 
 document.getElementById('logoDesktop').src = LOGO_URL_DESKTOP;
 document.getElementById('logoMobile').src  = LOGO_URL_MOBILE;
 
-let DATA, M, idx, YEARS, chartYear;
+let POP_TRENDS_DATA, M, idx, YEARS, chartYear, TP_DATA=null;
 const SPAN=[], COVER=[];
 const yearOf = k => parseInt(k.slice(0,4),10);
 
@@ -319,6 +553,218 @@ const fmtC = n => { const a=Math.abs(n);
   if(a>=1e3) return (n/1e3).toFixed(a>=1e5?0:1).replace(/\.0$/,'')+'K';
   return fmt(n); };
 const GC = {women:'#0072BC', men:'#05568B', boys:'#6CD8FD', girls:'#A097E3'};
+
+/* ---------- page navigation ---------- */
+let activePage='population', populationAsOf=null;
+const formatLongDate = value => new Date(value+'T00:00:00Z').toLocaleDateString('en-GB',{
+  day:'numeric',month:'long',year:'numeric',timeZone:'UTC'
+});
+function updateHeaderForPage(){
+  const sub=document.querySelector('.header .sub');
+  if(activePage==='tp'){
+    sub.textContent='Temporary Protection registrations in Moldova · reported snapshots';
+    document.getElementById('asof').textContent=TP_DATA ? formatLongDate(TP_DATA.updated) : '—';
+  }else{
+    sub.textContent='Refugee population flows & presence in Moldova · monthly series';
+    document.getElementById('asof').textContent=populationAsOf ? formatLongDate(populationAsOf) : '—';
+  }
+}
+function switchPage(page){
+  activePage=page;
+  const isPopulation=page==='population';
+  document.getElementById('populationPage').hidden=!isPopulation;
+  document.getElementById('tpPage').hidden=isPopulation;
+  document.getElementById('tabPopulation').classList.toggle('active',isPopulation);
+  document.getElementById('tabTP').classList.toggle('active',!isPopulation);
+  document.getElementById('tabPopulation').setAttribute('aria-selected',String(isPopulation));
+  document.getElementById('tabTP').setAttribute('aria-selected',String(!isPopulation));
+  updateHeaderForPage();
+  requestAnimationFrame(()=>{
+    if(isPopulation && flowChart) flowChart.resize();
+    if(!isPopulation && tpChart) tpChart.resize();
+  });
+}
+function printDashboard(page){
+  switchPage(page);
+  document.body.dataset.printPage=page;
+  const chart=page==='population'?flowChart:tpChart;
+  const prepare=()=>{if(chart) chart.resize();};
+  const cleanup=()=>{
+    delete document.body.dataset.printPage;
+    requestAnimationFrame(()=>{if(chart) chart.resize();});
+  };
+  window.addEventListener('beforeprint',prepare,{once:true});
+  window.addEventListener('afterprint',cleanup,{once:true});
+  requestAnimationFrame(()=>window.print());
+}
+function initTabs(){
+  document.getElementById('tabPopulation').onclick=()=>switchPage('population');
+  document.getElementById('tabTP').onclick=()=>switchPage('tp');
+  document.getElementById('printPopulation').onclick=()=>printDashboard('population');
+  document.getElementById('printTP').onclick=()=>printDashboard('tp');
+  document.getElementById('printTP').disabled=true;
+  updateHeaderForPage();
+}
+
+/* ---------- Temporary Protection page ---------- */
+let TPM=[], TP_YEARS=[], tpIdx=0, tpChartYear=null, tpChart=null, tpViewGlobal=[];
+const tpYearOf=d=>Number(d.date.slice(0,4));
+const formatTPDate=value=>{
+  const date=new Date(value+'T00:00:00Z');
+  return date.toLocaleDateString('en-GB',{
+    day:'numeric',month:'short',year:'numeric',timeZone:'UTC'
+  });
+};
+const fmtSigned=n=>(n>0?'+':'')+Math.round(n).toLocaleString('en-US');
+function tpAxisMonthLabel(value){
+  const position=Number(value), globalIndex=tpViewGlobal[position];
+  if(globalIndex===undefined) return '';
+  const current=TPM[globalIndex].date.slice(0,7);
+  const previous=position>0 ? TPM[tpViewGlobal[position-1]].date.slice(0,7) : '';
+  if(current===previous) return '';
+  const year=Number(current.slice(0,4)), month=Number(current.slice(5,7));
+  if(tpChartYear===null && position!==0 && (month-1)%3!==0) return '';
+  const monthName=new Date(Date.UTC(year,month-1,1)).toLocaleDateString('en-GB',{
+    month:'short',timeZone:'UTC'
+  });
+  return tpChartYear===null ? `${monthName} ${year}` : monthName;
+}
+function buildTPChart(){
+  const ctx=document.getElementById('tpChart').getContext('2d');
+  tpChart=new Chart(ctx,{
+    type:'line',
+    data:{
+      labels:[],
+      datasets:[
+        {label:'Cumulative Temporary Protection total',data:[],yAxisID:'y',
+         borderColor:'#0072BC',backgroundColor:'transparent',borderWidth:2.5,
+         fill:false,pointRadius:[],pointHoverRadius:7,pointBackgroundColor:'#0072BC',
+         pointBorderColor:'#fff',pointBorderWidth:1.5,tension:.22,order:1},
+        {label:'Change between snapshots',data:[],yAxisID:'y1',
+         borderColor:'#A097E3',backgroundColor:'rgba(160,151,227,.22)',borderWidth:2.25,
+         fill:'origin',spanGaps:false,pointRadius:[],pointHoverRadius:6,
+         pointBackgroundColor:'#A097E3',pointBorderColor:'#fff',pointBorderWidth:1.2,
+         tension:.24,order:2}
+      ]
+    },
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      interaction:{mode:'index',intersect:false},
+      plugins:{
+        legend:{display:false},
+        tooltip:{backgroundColor:'#0B3754',padding:12,cornerRadius:6,
+          titleFont:{family:'Lato',size:13,weight:'700'},
+          bodyFont:{family:'Lato',size:13},footerFont:{family:'Lato',size:12,weight:'400'},
+          footerColor:'#CDE3F1',
+          callbacks:{
+            title:items=>formatTPDate(TPM[tpViewGlobal[items[0].dataIndex]].date),
+            label:c=>c.datasetIndex===0
+              ? ` Cumulative total: ${fmt(c.parsed.y)}`
+              : ` Trend: ${fmtSigned(c.parsed.y)}`,
+            footer:items=>{
+              const raw=TPM[tpViewGlobal[items[0].dataIndex]];
+              return raw.trend<0 ? `Source correction: ${fmtSigned(raw.trend)} (trend line break)` : '';
+            }
+          }}
+      },
+      scales:{
+        x:{grid:{display:false},ticks:{font:{family:'Lato',size:11},color:'#7c858b',
+          maxRotation:0,autoSkip:false,callback:tpAxisMonthLabel},border:{color:'#cfd7dd'}},
+        y:{position:'left',min:0,grid:{color:'#eef2f5'},border:{display:false},
+          ticks:{font:{family:'Lato',size:11},color:'#0072BC',callback:v=>fmtC(v)},
+          title:{display:true,text:'Cumulative total',font:{family:'Lato',size:11,weight:'700'},color:'#0072BC'}},
+        y1:{position:'right',suggestedMin:0,grid:{display:false},border:{display:false},
+          ticks:{font:{family:'Lato',size:11},color:'#695FBA',callback:v=>fmtC(v)},
+          title:{display:true,text:'Change between snapshots',font:{family:'Lato',size:11,weight:'700'},color:'#695FBA'}}
+      }
+    }
+  });
+}
+function tpIndices(){
+  return TPM.map((d,i)=>i).filter(i=>tpChartYear===null || tpYearOf(TPM[i])===tpChartYear);
+}
+function updateTPChart(){
+  const idxs=tpIndices();
+  tpViewGlobal=idxs;
+  tpChart.data.labels=idxs.map(i=>TPM[i].date);
+  const ds=tpChart.data.datasets;
+  ds[0].data=idxs.map(i=>TPM[i].cumulative);
+  ds[1].data=idxs.map(i=>TPM[i].trend<0 ? null : TPM[i].trend);
+  ds[0].pointRadius=idxs.map(i=>i===tpIdx?4:0);
+  ds[1].pointRadius=idxs.map(i=>i===tpIdx && TPM[i].trend>=0?5:2);
+  tpChart.update('none');
+  const yl=document.getElementById('tpYrLabel');
+  yl.textContent=tpChartYear===null?'All':tpChartYear;
+  yl.classList.toggle('all',tpChartYear===null);
+  document.getElementById('tpYrPrev').disabled=tpChartYear===TP_YEARS[0];
+  document.getElementById('tpYrNext').disabled=tpChartYear===null;
+  document.getElementById('tpYrAll').classList.toggle('active',tpChartYear===null);
+}
+function renderTP(){
+  const d=TPM[tpIdx];
+  document.getElementById('tpTlDate').textContent=formatTPDate(d.date);
+  document.getElementById('tpSlider').value=tpIdx;
+  document.getElementById('tpCumulative').textContent=fmt(d.cumulative);
+  document.getElementById('tpTrend').textContent=fmtSigned(d.trend);
+  document.getElementById('tpTrend').style.color=d.trend<0?'var(--red)':'var(--ink)';
+  document.getElementById('tpTrendNote').textContent=d.trend<0
+    ? 'Source correction / series rebase'
+    : 'New registrations in the reported interval';
+  document.getElementById('tpKpiThru').textContent=`— at ${formatTPDate(d.date)}`;
+  document.getElementById('tpPrevBtn').disabled=tpIdx===0;
+  document.getElementById('tpNextBtn').disabled=tpIdx===TPM.length-1;
+  updateTPChart();
+}
+function initTP(){
+  const slider=document.getElementById('tpSlider');
+  slider.max=TPM.length-1; slider.value=tpIdx;
+  buildTPChart(); renderTP();
+  const follow=()=>{if(tpChartYear!==null) tpChartYear=tpYearOf(TPM[tpIdx]);};
+  slider.addEventListener('input',e=>{tpIdx=+e.target.value;follow();renderTP();});
+  document.getElementById('tpPrevBtn').onclick=()=>{if(tpIdx>0){tpIdx--;follow();renderTP();}};
+  document.getElementById('tpNextBtn').onclick=()=>{if(tpIdx<TPM.length-1){tpIdx++;follow();renderTP();}};
+  document.getElementById('tpLatestBtn').onclick=()=>{tpIdx=TPM.length-1;follow();renderTP();};
+  const allPos=TP_YEARS.length;
+  const yrStep=d=>{
+    const p=tpChartYear===null?allPos:TP_YEARS.indexOf(tpChartYear), np=p+d;
+    if(np<0||np>allPos) return;
+    tpChartYear=np===allPos?null:TP_YEARS[np];
+    updateTPChart();
+  };
+  document.getElementById('tpYrPrev').onclick=()=>yrStep(-1);
+  document.getElementById('tpYrNext').onclick=()=>yrStep(1);
+  document.getElementById('tpYrAll').onclick=()=>{tpChartYear=null;updateTPChart();};
+}
+async function bootTP(){
+  try{
+    const res=await fetch(TP_DATA_URL,{cache:'no-store'});
+    if(!res.ok) throw new Error('HTTP '+res.status+' — could not load Temporary Protection data');
+    const payload=await res.json();
+    const snapshots=Array.isArray(payload)?payload:payload?.snapshots;
+    if(!Array.isArray(snapshots)||!snapshots.length){
+      throw new Error('TP data file has no "snapshots" array');
+    }
+    if(snapshots.some(d=>!d?.date||!Number.isFinite(Number(d.cumulative))||!Number.isFinite(Number(d.trend)))){
+      throw new Error('TP data contains an invalid snapshot');
+    }
+    TP_DATA=Array.isArray(payload)
+      ? {updated:snapshots[snapshots.length-1].date,snapshots}
+      : {...payload,updated:payload.updated||snapshots[snapshots.length-1].date,snapshots};
+    TPM=TP_DATA.snapshots;
+    TP_YEARS=[...new Set(TPM.map(d=>Number(d.date.slice(0,4))))].sort((a,b)=>a-b);
+    tpIdx=TPM.length-1;
+    tpChartYear=TP_YEARS[TP_YEARS.length-1];
+    document.getElementById('printTP').disabled=false;
+    initTP();
+    if(activePage==='tp') updateHeaderForPage();
+  }catch(err){
+    document.getElementById('tpPage').insertAdjacentHTML('afterbegin',
+      `<div style="background:#FCE2DE;border:1px solid #D25A45;color:#683229;padding:16px 20px;border-radius:10px;margin-bottom:16px;font-size:14px">
+        <b>Couldn't load Temporary Protection data.</b> Upload <code>tp_data.json</code> to the configured GitHub location.<br>
+        <span style="color:#9C4637">Details: ${String(err.message||err)}</span>
+      </div>`);
+  }
+}
 
 /* ---------- breakdown bars inside a staying card ---------- */
 function renderBreakdown(elId, obj){
@@ -456,7 +902,11 @@ function render(){
 
 /* ---------- wiring ---------- */
 function init(){
-  document.getElementById('asof').textContent=new Date(DATA.updated).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+  populationAsOf=POP_TRENDS_DATA.updated;
+  if(activePage==='population') updateHeaderForPage();
+  document.getElementById('popSource').textContent=
+    `Source: ${POP_TRENDS_DATA.meta.source}, ${M[0].label} – ${M[M.length-1].label}`;
+  document.getElementById('popMethodology').textContent=POP_TRENDS_DATA.meta.methodology_note;
   const sl=document.getElementById('slider'); sl.max=M.length-1; sl.value=idx;
   buildFlow(); render();
 
@@ -485,28 +935,35 @@ function init(){
     c.addEventListener('click',()=>c.classList.toggle('open'));
   });
 }
-async function boot(){
+async function bootPopulation(){
   try{
-    const res = await fetch(DATA_URL, {cache:'no-store'});
+    const res = await fetch(POP_TRENDS_URL, {cache:'no-store'});
     if(!res.ok) throw new Error('HTTP '+res.status+' — could not load data');
-    DATA = await res.json();
-    if(!DATA || !Array.isArray(DATA.months) || !DATA.months.length) throw new Error('Data file has no "months" array');
+    POP_TRENDS_DATA = await res.json();
+    if(!POP_TRENDS_DATA || !Array.isArray(POP_TRENDS_DATA.months) || !POP_TRENDS_DATA.months.length){
+      throw new Error('Population Trends data file has no "months" array');
+    }
+    if(!POP_TRENDS_DATA.meta?.source || !POP_TRENDS_DATA.meta?.methodology_note){
+      throw new Error('Population Trends data file has no complete "meta" object');
+    }
   }catch(err){
     document.querySelector('.wrap').insertAdjacentHTML('afterbegin',
       `<div style="background:#FCE2DE;border:1px solid #D25A45;color:#683229;padding:16px 20px;border-radius:10px;margin-bottom:16px;font-size:14px">
-        <b>Couldn't load the data.</b> Check that <code>DATA_URL</code> points to a reachable JSON file (raw GitHub URL, with %20 for spaces).<br>
+        <b>Couldn't load Population Trends data.</b> Check that <code>POP_TRENDS_URL</code> points to the raw <code>pop_trends.json</code> file.<br>
         <span style="color:#9C4637">Details: ${String(err.message||err)}</span>
       </div>`);
     return;
   }
-  M = DATA.months;
+  M = POP_TRENDS_DATA.months;
   idx = M.length - 1;
   YEARS = [...new Set(M.map(m=>yearOf(m.key)))].sort((a,b)=>a-b);
   chartYear = YEARS[YEARS.length-1];   // default: latest year; null = all years
   computeSpans();
   init();
 }
-boot();
+initTabs();
+bootTP();
+bootPopulation();
 </script>
 </body>
 </html>
