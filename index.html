@@ -155,6 +155,12 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
 .kpi.tp-trend{border-left-color:var(--purple)}
 .kpi.tp-trend .kpi-ico{background:#E7E4F8}
 .tp-kpi-row{grid-template-columns:repeat(2,minmax(0,1fr))}
+.tp-kpi-row .kpi{display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center;
+  gap:14px; padding:16px 20px}
+.tp-kpi-row .kpi-text{min-width:0}
+.tp-kpi-row .kpi-label{min-height:0}
+.tp-kpi-row .kpi-note{margin-top:3px}
+.tp-kpi-row .kpi-value{margin:0; padding:0; font-size:32px; text-align:right; white-space:nowrap}
 .kpi-top{display:flex; align-items:flex-start; gap:12px}
 .kpi-ico{flex:0 0 auto; width:38px; height:38px; border-radius:8px; background:var(--blue-01);
   display:flex; align-items:center; justify-content:center}
@@ -216,6 +222,8 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
   .page-tab{padding:10px 8px;font-size:13px}
   .page-actions{display:none}
   .tp-kpi-row{grid-template-columns:1fr}
+  .tp-kpi-row .kpi{grid-template-columns:auto minmax(0,1fr)}
+  .tp-kpi-row .kpi-value{grid-column:1/-1; text-align:left; font-size:28px; padding-top:4px}
   .timeline .tl-controls{min-width:100%;gap:9px}
   .timeline{padding:16px}
   .chart-box{height:300px}
@@ -301,8 +309,9 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
   body[data-print-page="tp"] .timeline{padding:3mm 4mm;margin-bottom:3mm}
   body[data-print-page="tp"] .sec-title{margin-bottom:2mm}
   body[data-print-page="tp"] .kpi-row{gap:2.5mm;margin-bottom:3mm}
-  body[data-print-page="tp"] .kpi{padding:3mm}
+  body[data-print-page="tp"] .kpi{padding:3mm 4mm;gap:3mm}
   body[data-print-page="tp"] .kpi-value{font-size:17pt}
+  body[data-print-page="tp"] .kpi-note{margin-top:1mm}
   body[data-print-page="tp"] .chart-card{padding:4mm;margin-bottom:1mm}
   body[data-print-page="tp"] .chart-box{height:95mm!important;min-height:95mm}
   body[data-print-page="tp"] .chart-note{margin-top:2.5mm;padding-top:2.5mm}
@@ -503,20 +512,20 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
     <div class="sec-title"><span data-i18n="tpSecTitle">Temporary Protection registrations</span> <span id="tpKpiThru" style="text-transform:none;font-weight:400;color:var(--ink-3)"></span></div>
     <div class="kpi-row tp-kpi-row">
       <div class="kpi">
-        <div class="kpi-top">
-          <div class="kpi-ico" aria-hidden="true"><span style="font-size:21px;font-weight:900;color:var(--blue)">TP</span></div>
+        <div class="kpi-ico" aria-hidden="true"><span style="font-size:21px;font-weight:900;color:var(--blue)">TP</span></div>
+        <div class="kpi-text">
           <div class="kpi-label" data-i18n="tpKpiCum">Temporary Protection Beneficiaries</div>
+          <div class="kpi-note" data-i18n="tpKpiCumNote">Cumulative figure as of selected date</div>
         </div>
         <div class="kpi-value" id="tpCumulative">—</div>
-        <div class="kpi-note" data-i18n="tpKpiCumNote">Cumulative figure as of selected date</div>
       </div>
       <div class="kpi tp-trend">
-        <div class="kpi-top">
-          <div class="kpi-ico" aria-hidden="true"><span style="font-size:23px;font-weight:900;color:#695FBA">↗</span></div>
+        <div class="kpi-ico" aria-hidden="true"><span style="font-size:23px;font-weight:900;color:#695FBA">↗</span></div>
+        <div class="kpi-text">
           <div class="kpi-label" data-i18n="tpKpiNew"># of new TP Beneficiaries</div>
+          <div class="kpi-note" id="tpTrendNote">New registrations in the interval</div>
         </div>
         <div class="kpi-value" id="tpTrend">—</div>
-        <div class="kpi-note" id="tpTrendNote">New registrations in the interval</div>
       </div>
     </div>
 
