@@ -226,7 +226,7 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
   body{padding:0;color:var(--ink)}
   body *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .wrap{width:100%;max-width:none;margin:0}
-  .page-tabs,.page-actions,.timeline .tl-controls,
+  .page-tabs,.page-actions,.lang-switch,.timeline .tl-controls,
   .year-nav .tl-btn,.year-nav .tl-latest{display:none!important}
   body[data-print-page="population"] #tpPage,
   body[data-print-page="tp"] #populationPage{display:none!important}
@@ -296,6 +296,21 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
   .chart-note{font-size:8pt;margin-top:3mm;padding-top:3mm}
   .footer{font-size:8pt;padding:2mm 0 0}
 
+  /* Temporary Protection is tuned to remain on one portrait A4 sheet. */
+  body[data-print-page="tp"] .header{padding:3.5mm 5mm;margin-bottom:3mm}
+  body[data-print-page="tp"] .timeline{padding:3mm 4mm;margin-bottom:3mm}
+  body[data-print-page="tp"] .sec-title{margin-bottom:2mm}
+  body[data-print-page="tp"] .kpi-row{gap:2.5mm;margin-bottom:3mm}
+  body[data-print-page="tp"] .kpi{padding:3mm}
+  body[data-print-page="tp"] .kpi-value{font-size:17pt}
+  body[data-print-page="tp"] .chart-card{padding:4mm;margin-bottom:1mm}
+  body[data-print-page="tp"] .chart-box{height:95mm!important;min-height:95mm}
+  body[data-print-page="tp"] .chart-note{margin-top:2.5mm;padding-top:2.5mm}
+  body[data-print-page="tp"] .footer{
+    font-size:7.5pt;line-height:1.4;padding-top:.5mm;margin-top:0;
+    break-inside:avoid;page-break-inside:avoid;
+  }
+
   /* Population Trends is tuned to remain on one portrait A4 sheet. */
   body[data-print-page="population"] #populationPage{zoom:.97}
   body[data-print-page="population"] .header{padding:3.5mm 5mm;margin-bottom:3mm}
@@ -328,7 +343,7 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
   body[data-print-page="population"] .chart-card{padding:3mm 4mm;margin-bottom:1mm}
   body[data-print-page="population"] .chart-head{margin-bottom:2mm}
   body[data-print-page="population"] .chart-card .csub{font-size:7.5pt}
-  body[data-print-page="population"] .chart-box{height:60mm!important;min-height:60mm}
+  body[data-print-page="population"] .chart-box{height:57mm!important;min-height:57mm}
   body[data-print-page="population"] .legend{margin-top:2mm;padding-top:2mm;gap:4mm}
   body[data-print-page="population"] .lg{font-size:7.5pt}
   body[data-print-page="population"] .chart-note{font-size:7pt;margin-top:2mm;padding-top:2mm}
