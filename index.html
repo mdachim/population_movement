@@ -205,8 +205,7 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
 }
 @media (max-width:560px){
   .page-tab{padding:10px 8px;font-size:13px}
-  .page-actions{margin-top:12px}
-  .print-btn{width:100%}
+  .page-actions{display:none}
   .tp-kpi-row{grid-template-columns:1fr}
   .timeline .tl-controls{min-width:100%;gap:9px}
   .timeline{padding:16px}
@@ -482,15 +481,15 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
       <div class="kpi">
         <div class="kpi-top">
           <div class="kpi-ico" aria-hidden="true"><span style="font-size:21px;font-weight:900;color:var(--blue)">TP</span></div>
-          <div class="kpi-label">Cumulative Temporary Protection total</div>
+          <div class="kpi-label">Temporary Protection Beneficiaries</div>
         </div>
         <div class="kpi-value" id="tpCumulative">—</div>
-        <div class="kpi-note">Total recorded at the selected snapshot</div>
+        <div class="kpi-note">Cumulative figure as of selected date</div>
       </div>
       <div class="kpi tp-trend">
         <div class="kpi-top">
           <div class="kpi-ico" aria-hidden="true"><span style="font-size:23px;font-weight:900;color:#695FBA">↗</span></div>
-          <div class="kpi-label">Change since previous snapshot</div>
+          <div class="kpi-label"># of new TP Beneficiaries</div>
         </div>
         <div class="kpi-value" id="tpTrend">—</div>
         <div class="kpi-note" id="tpTrendNote">New registrations in the interval</div>
@@ -512,14 +511,14 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
       </div>
       <div class="chart-box"><canvas id="tpChart"></canvas></div>
       <div class="legend">
-        <div class="lg"><span class="sw line" style="background:var(--blue)"></span>Cumulative Temporary Protection total</div>
-        <div class="lg"><span class="sw area"></span>Change between snapshots (trend)</div>
+        <div class="lg"><span class="sw line" style="background:var(--blue)"></span>Temporary Protection Beneficiaries</div>
+        <div class="lg"><span class="sw area"></span># of new TP Beneficiaries (trend)</div>
       </div>
-      <div class="chart-note">The source series includes a downward correction on 27 April 2026. It remains visible in the cumulative area; the correction is treated as a series break in the registration-trend line so ordinary changes remain readable.</div>
+      <div class="chart-note">In February 2026, the Government of the Republic of Moldova announced the extension process of Temporary Protection, which also served as a validation mechanism for those who remain in the country. The exercise was concluded in April 2026, and 47K out of 88k people applied for the extension.</div>
     </div>
 
     <div class="footer">
-      Source: <b>TP data.xlsx</b>, worksheet <b>weekly_snapshot</b>, 26 Mar 2023 – 3 Aug 2026.<br>
+      Source: <b>IGM</b>, 26 Mar 2023 – 3 Aug 2026.<br>
       Snapshot intervals vary in the source data, particularly near the end of the series.
     </div>
     <div class="page-actions">
