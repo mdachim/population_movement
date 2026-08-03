@@ -555,6 +555,7 @@ const LOGO_URL_DESKTOP = "https://raw.githubusercontent.com/mdachim/population_m
 const LOGO_URL_MOBILE  = "https://raw.githubusercontent.com/mdachim/population_movement/main/Horizontal%20white.png"; // horizontal logo (mobile)
 const POP_TRENDS_URL = "https://raw.githubusercontent.com/mdachim/population_movement/main/pop_trends.json";
 const TP_DATA_URL = "https://raw.githubusercontent.com/mdachim/population_movement/main/tp_data.json";
+const LABELS_URL = "https://raw.githubusercontent.com/mdachim/population_movement/main/labels.json";
 
 document.getElementById('logoDesktop').src = LOGO_URL_DESKTOP;
 document.getElementById('logoMobile').src  = LOGO_URL_MOBILE;
@@ -582,9 +583,9 @@ const I18N = {
     stayElseOrigin:'Entered via the Romanian border or by air',
     breakdown:'Breakdown',
     women:'Women', men:'Men', girls:'Girls', boys:'Boys',
-    share:(pct,total)=>`${pct}% of all staying · ${total} total`,
+    share:'{pct}% of all staying · {total} total',
     secCum:'Cumulative refugee flows',
-    thru:label=>`— through ${label}`,
+    thru:'— through {label}',
     kpiArrUkr:'Arrivals · Ukrainians from Ukraine',
     kpiArrElse:'Arrivals · Ukrainians from elsewhere',
     kpiDepUkr:'Departures · Ukrainians to Ukraine',
@@ -599,13 +600,13 @@ const I18N = {
     legArr:'Arrivals', legDep:'Departures', legRem:'Remaining population (trend)',
     dsArr:'Arrivals', dsDep:'Departures', dsRem:'Remaining population',
     axisFlows:'Monthly crossings', axisRem:'Remaining',
-    combined:list=>`Combined figure — covers ${list}`,
+    combined:'Combined figure — covers {list}',
     chartNote:'* A month marked with <b>*</b> also carries the preceding month(s) that had no separate report — its bar is a combined figure. Hover a bar for details.',
     footer:'Source: cross-border flow records for Ukrainian refugees reported by the Border Police, Mar 2022 – Jun 2026 <br>\n    Figures for the refugee population present are model estimates and are rounded in labels.',
     langGroup:'Language',
     errBody:"<b>Couldn't load the data.</b> Check that <code>DATA_URL</code> points to a reachable JSON file (raw GitHub URL, with %20 for spaces).",
     errDetails:'Details: ',
-    errHttp:status=>`HTTP ${status} — could not load data`,
+    errHttp:'HTTP {status} — could not load data',
     errShape:'Data file has no "months" array'
   },
   ro:{
@@ -624,9 +625,9 @@ const I18N = {
     stayElseOrigin:'Intrare prin frontiera cu România sau pe cale aeriană',
     breakdown:'Detaliere',
     women:'Femei', men:'Bărbați', girls:'Fete', boys:'Băieți',
-    share:(pct,total)=>`${pct}% din totalul persoanelor rămase · ${total} în total`,
+    share:'{pct}% din totalul persoanelor rămase · {total} în total',
     secCum:'Fluxuri cumulative de refugiați',
-    thru:label=>`— până în ${label}`,
+    thru:'— până în {label}',
     kpiArrUkr:'Sosiri · ucraineni din Ucraina',
     kpiArrElse:'Sosiri · ucraineni din alte țări',
     kpiDepUkr:'Plecări · ucraineni spre Ucraina',
@@ -641,13 +642,13 @@ const I18N = {
     legArr:'Sosiri', legDep:'Plecări', legRem:'Populația rămasă (tendință)',
     dsArr:'Sosiri', dsDep:'Plecări', dsRem:'Populația rămasă',
     axisFlows:'Treceri lunare', axisRem:'Rămași',
-    combined:list=>`Valoare combinată — acoperă ${list}`,
+    combined:'Valoare combinată — acoperă {list}',
     chartNote:'* O lună marcată cu <b>*</b> include și luna sau lunile precedente fără raport separat — bara sa este o valoare combinată. Treceți cursorul peste bară pentru detalii.',
     footer:'Sursa: evidențele fluxurilor transfrontaliere ale refugiaților ucraineni raportate de Poliția de Frontieră, mar. 2022 – iun. 2026 <br>\n    Cifrele privind populația de refugiați prezentă sunt estimări ale modelului și sunt rotunjite în etichete.',
     langGroup:'Limbă',
     errBody:'<b>Datele nu au putut fi încărcate.</b> Verificați dacă <code>DATA_URL</code> indică un fișier JSON accesibil (URL raw GitHub, cu %20 pentru spații).',
     errDetails:'Detalii: ',
-    errHttp:status=>`HTTP ${status} — datele nu au putut fi încărcate`,
+    errHttp:'HTTP {status} — datele nu au putut fi încărcate',
     errShape:'Fișierul de date nu conține lista "months"'
   }
 };
@@ -655,9 +656,29 @@ const LANGS = Object.keys(I18N);
 let LANG = 'en';
 try{ const saved=localStorage.getItem('dashLang'); if(LANGS.includes(saved)) LANG=saved; }catch(e){}
 
-function T(key, ...args){
+function T(key, params){
   const v = I18N[LANG][key] ?? I18N.en[key];
-  return typeof v === 'function' ? v(...args) : v;
+  if(typeof v !== 'string') return v;                 // months array
+  return params ? v.replace(/\{(\w+)\}/g, (m,k)=> params[k] ?? m) : v;
+}
+// labels.json (see LABELS_URL) overrides the built-in text above, key by key.
+// Anything missing, malformed or unreachable simply keeps the built-in value.
+async function loadLabels(){
+  let doc;
+  try{
+    const res = await fetch(LABELS_URL,{cache:'no-store'});
+    if(!res.ok) return;
+    doc = await res.json();
+  }catch(e){ return; }
+  if(!doc || typeof doc !== 'object') return;
+  LANGS.forEach(l=>{
+    if(typeof doc.locale?.[l] === 'string') I18N[l].locale = doc.locale[l];
+    const mo = doc.months?.[l];
+    if(Array.isArray(mo) && mo.length===12 && mo.every(x=>typeof x === 'string')) I18N[l].months = mo;
+    Object.entries(doc.labels || {}).forEach(([k,v])=>{
+      if(typeof v?.[l] === 'string' && v[l].trim()) I18N[l][k] = v[l];
+    });
+  });
 }
 // Strings carrying markup (&amp;, <b>) are written as HTML, so decode for textContent.
 const dec = html => { const t=document.createElement('textarea'); t.innerHTML=html; return t.value; };
@@ -960,7 +981,7 @@ function buildFlow(){
             title:items=>{ const g=viewGlobal[items[0].dataIndex]; return keyLabel(M[g].key); },
             label:c=>` ${c.dataset.label}: ${fmt(c.parsed.y)}`,
             footer:items=>{ const g=viewGlobal[items[0].dataIndex];
-              return COVER[g] ? T('combined', COVER[g].map(keyLabel).join(' + ')) : ''; }
+              return COVER[g] ? T('combined',{list:COVER[g].map(keyLabel).join(' + ')}) : ''; }
           }}
       },
       scales:{
@@ -1011,12 +1032,12 @@ function render(){
   document.getElementById('valUkr').textContent=fmt(m.stay_ukraine.total);
   document.getElementById('valElse').textContent=fmt(m.stay_elsewhere.total);
   const grand=m.stay_ukraine.total+m.stay_elsewhere.total;
-  document.getElementById('shareUkr').textContent=T('share',(m.stay_ukraine.total/grand*100).toFixed(0),fmt(grand));
-  document.getElementById('shareElse').textContent=T('share',(m.stay_elsewhere.total/grand*100).toFixed(0),fmt(grand));
+  document.getElementById('shareUkr').textContent=T('share',{pct:(m.stay_ukraine.total/grand*100).toFixed(0),total:fmt(grand)});
+  document.getElementById('shareElse').textContent=T('share',{pct:(m.stay_elsewhere.total/grand*100).toFixed(0),total:fmt(grand)});
   renderBreakdown('bdUkr',m.stay_ukraine);
   renderBreakdown('bdElse',m.stay_elsewhere);
 
-  document.getElementById('kpiThru').textContent=T('thru',keyLabel(m.key));
+  document.getElementById('kpiThru').textContent=T('thru',{label:keyLabel(m.key)});
   document.getElementById('kpiArrUkr').textContent=fmtC(m.cum_arr_ukraine);
   document.getElementById('kpiArrElse').textContent=fmtC(m.cum_arr_elsewhere);
   document.getElementById('kpiDepUkr').textContent=fmtC(m.cum_dep_ukraine);
@@ -1087,7 +1108,7 @@ async function bootPopulation(){
   applyStatic();
   try{
     const res = await fetch(POP_TRENDS_URL, {cache:'no-store'});
-    if(!res.ok) throw new Error(T('errHttp',res.status));
+    if(!res.ok) throw new Error(T('errHttp',{status:res.status}));
     POP_TRENDS_DATA = await res.json();
     if(!POP_TRENDS_DATA || !Array.isArray(POP_TRENDS_DATA.months) || !POP_TRENDS_DATA.months.length) throw new Error(T('errShape'));
   }catch(err){
@@ -1109,9 +1130,13 @@ async function bootPopulation(){
   computeSpans();
   init();
 }
-initTabs();
-bootTP();
-bootPopulation();
+(async()=>{
+  initTabs();
+  await loadLabels();
+  applyStatic();
+  bootTP();
+  bootPopulation();
+})();
 </script>
 </body>
 </html>

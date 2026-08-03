@@ -1,0 +1,248 @@
+{
+  "_readme": [
+    "Label mapping for the dashboard. Edit the 'ro' values (or 'en') and reload the page — index.html fetches this file and overrides its built-in labels; anything missing or malformed falls back to the built-in text.",
+    "{pct} {total} {label} {list} {status} are placeholders filled in at runtime — keep them, in any order that reads well.",
+    "Values ending in 'Body', 'Note' or 'footer' are HTML: <b>, <code> and <br> are kept as markup. Elsewhere &amp; means a literal '&'.",
+    "months must stay 12 entries, January first. locale drives number and date formatting."
+  ],
+  "locale": {
+    "en": "en-GB",
+    "ro": "ro-RO"
+  },
+  "months": {
+    "en": [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
+    ],
+    "ro": [
+      "ian.",
+      "feb.",
+      "mar.",
+      "apr.",
+      "mai",
+      "iun.",
+      "iul.",
+      "aug.",
+      "sep.",
+      "oct.",
+      "noi.",
+      "dec."
+    ]
+  },
+  "labels": {
+    "title": {
+      "en": "Ukrainian Refugees in Moldova — Population Dashboard",
+      "ro": "Refugiați ucraineni în Moldova — Tablou de bord al populației"
+    },
+    "h1": {
+      "en": "Ukrainian Refugees in Moldova",
+      "ro": "Refugiați ucraineni în Moldova"
+    },
+    "sub": {
+      "en": "Refugee population flows &amp; presence in Moldova · monthly series",
+      "ro": "Fluxurile și prezența populației de refugiați în Moldova · serie lunară"
+    },
+    "asOf": {
+      "en": "Data as of",
+      "ro": "Date la"
+    },
+    "viewingMonth": {
+      "en": "Viewing month",
+      "ro": "Luna afișată"
+    },
+    "prevMonth": {
+      "en": "Previous month",
+      "ro": "Luna precedentă"
+    },
+    "nextMonth": {
+      "en": "Next month",
+      "ro": "Luna următoare"
+    },
+    "latest": {
+      "en": "Latest",
+      "ro": "Ultima lună"
+    },
+    "secStay": {
+      "en": "Ukrainians staying in Moldova — by where they entered",
+      "ro": "Ucraineni care rămân în Moldova — după locul intrării"
+    },
+    "stayUkrCap": {
+      "en": "Arrived directly from Ukraine",
+      "ro": "Sosiți direct din Ucraina"
+    },
+    "stayUkrOrigin": {
+      "en": "Entered via the Moldova–Ukraine border",
+      "ro": "Intrare prin frontiera Moldova–Ucraina"
+    },
+    "stayElseCap": {
+      "en": "Arrived from elsewhere",
+      "ro": "Sosiți din alte țări"
+    },
+    "stayElseOrigin": {
+      "en": "Entered via the Romanian border or by air",
+      "ro": "Intrare prin frontiera cu România sau pe cale aeriană"
+    },
+    "breakdown": {
+      "en": "Breakdown",
+      "ro": "Detaliere"
+    },
+    "women": {
+      "en": "Women",
+      "ro": "Femei"
+    },
+    "men": {
+      "en": "Men",
+      "ro": "Bărbați"
+    },
+    "girls": {
+      "en": "Girls",
+      "ro": "Fete"
+    },
+    "boys": {
+      "en": "Boys",
+      "ro": "Băieți"
+    },
+    "share": {
+      "en": "{pct}% of all staying · {total} total",
+      "ro": "{pct}% din totalul persoanelor rămase · {total} în total"
+    },
+    "secCum": {
+      "en": "Cumulative refugee flows",
+      "ro": "Fluxuri cumulative de refugiați"
+    },
+    "thru": {
+      "en": "— through {label}",
+      "ro": "— până în {label}"
+    },
+    "kpiArrUkr": {
+      "en": "Arrivals · Ukrainians from Ukraine",
+      "ro": "Sosiri · ucraineni din Ucraina"
+    },
+    "kpiArrElse": {
+      "en": "Arrivals · Ukrainians from elsewhere",
+      "ro": "Sosiri · ucraineni din alte țări"
+    },
+    "kpiDepUkr": {
+      "en": "Departures · Ukrainians to Ukraine",
+      "ro": "Plecări · ucraineni spre Ucraina"
+    },
+    "kpiDepElse": {
+      "en": "Departures · Ukrainians to elsewhere",
+      "ro": "Plecări · ucraineni spre alte țări"
+    },
+    "noteArrUkr": {
+      "en": "Entries via Ukraine border",
+      "ro": "Intrări prin frontiera cu Ucraina"
+    },
+    "noteArrElse": {
+      "en": "Entries via Romania &amp; air",
+      "ro": "Intrări prin România și pe cale aeriană"
+    },
+    "noteDepUkr": {
+      "en": "Exits via Ukraine border",
+      "ro": "Ieșiri prin frontiera cu Ucraina"
+    },
+    "noteDepElse": {
+      "en": "Exits via Romania &amp; air",
+      "ro": "Ieșiri prin România și pe cale aeriană"
+    },
+    "chartTitle": {
+      "en": "Monthly arrivals &amp; departures with remaining population",
+      "ro": "Sosiri și plecări lunare, cu populația rămasă"
+    },
+    "chartSub": {
+      "en": "Bars show refugee arrivals and departures each month; the line tracks the refugee population remaining in Moldova. The selected month is highlighted.",
+      "ro": "Barele arată sosirile și plecările refugiaților în fiecare lună; linia urmărește populația de refugiați rămasă în Moldova. Luna selectată este evidențiată."
+    },
+    "prevYear": {
+      "en": "Previous year",
+      "ro": "Anul precedent"
+    },
+    "nextYear": {
+      "en": "Next year",
+      "ro": "Anul următor"
+    },
+    "allYears": {
+      "en": "All years",
+      "ro": "Toți anii"
+    },
+    "allShort": {
+      "en": "All",
+      "ro": "Toți"
+    },
+    "legArr": {
+      "en": "Arrivals",
+      "ro": "Sosiri"
+    },
+    "legDep": {
+      "en": "Departures",
+      "ro": "Plecări"
+    },
+    "legRem": {
+      "en": "Remaining population (trend)",
+      "ro": "Populația rămasă (tendință)"
+    },
+    "dsArr": {
+      "en": "Arrivals",
+      "ro": "Sosiri"
+    },
+    "dsDep": {
+      "en": "Departures",
+      "ro": "Plecări"
+    },
+    "dsRem": {
+      "en": "Remaining population",
+      "ro": "Populația rămasă"
+    },
+    "axisFlows": {
+      "en": "Monthly crossings",
+      "ro": "Treceri lunare"
+    },
+    "axisRem": {
+      "en": "Remaining",
+      "ro": "Rămași"
+    },
+    "combined": {
+      "en": "Combined figure — covers {list}",
+      "ro": "Valoare combinată — acoperă {list}"
+    },
+    "chartNote": {
+      "en": "* A month marked with <b>*</b> also carries the preceding month(s) that had no separate report — its bar is a combined figure. Hover a bar for details.",
+      "ro": "* O lună marcată cu <b>*</b> include și luna sau lunile precedente fără raport separat — bara sa este o valoare combinată. Treceți cursorul peste bară pentru detalii."
+    },
+    "footer": {
+      "en": "Source: cross-border flow records for Ukrainian refugees reported by the Border Police, Mar 2022 – Jun 2026 <br>\n    Figures for the refugee population present are model estimates and are rounded in labels.",
+      "ro": "Sursa: evidențele fluxurilor transfrontaliere ale refugiaților ucraineni raportate de Poliția de Frontieră, mar. 2022 – iun. 2026 <br>\n    Cifrele privind populația de refugiați prezentă sunt estimări ale modelului și sunt rotunjite în etichete."
+    },
+    "langGroup": {
+      "en": "Language",
+      "ro": "Limbă"
+    },
+    "errBody": {
+      "en": "<b>Couldn't load the data.</b> Check that <code>DATA_URL</code> points to a reachable JSON file (raw GitHub URL, with %20 for spaces).",
+      "ro": "<b>Datele nu au putut fi încărcate.</b> Verificați dacă <code>DATA_URL</code> indică un fișier JSON accesibil (URL raw GitHub, cu %20 pentru spații)."
+    },
+    "errDetails": {
+      "en": "Details: ",
+      "ro": "Detalii: "
+    },
+    "errHttp": {
+      "en": "HTTP {status} — could not load data",
+      "ro": "HTTP {status} — datele nu au putut fi încărcate"
+    },
+    "errShape": {
+      "en": "Data file has no \"months\" array",
+      "ro": "Fișierul de date nu conține lista \"months\""
+    }
+  }
+}
