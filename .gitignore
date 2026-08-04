@@ -1,4 +1,6 @@
 *.py
 *.xlsx
+*.xls
 archive/
-
+data/
+__pychache__/

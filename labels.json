@@ -79,7 +79,7 @@
     },
     "stayUkrCap": {
       "en": "Arrived directly from Ukraine",
-      "ro": "Sosiți direct din Ucraina"
+      "ro": "Sosiri direct din Ucraina"
     },
     "stayUkrOrigin": {
       "en": "Entered via the Moldova–Ukraine border",
@@ -87,7 +87,7 @@
     },
     "stayElseCap": {
       "en": "Arrived from elsewhere",
-      "ro": "Sosiți din alte țări"
+      "ro": "Sosiri din alte țări"
     },
     "stayElseOrigin": {
       "en": "Entered via the Romanian border or by air",
