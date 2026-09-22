@@ -756,6 +756,16 @@
       "date": "2026-09-02",
       "cumulative": 57731,
       "trend": 2253
+    },
+    {
+      "date": "2026-09-14",
+      "cumulative": 58491,
+      "trend": 760
+    },
+    {
+      "date": "2026-09-21",
+      "cumulative": 59123,
+      "trend": 632
     }
   ]
 }
