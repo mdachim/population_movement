@@ -96,6 +96,7 @@ html.embedded .wrap{
   font:700 13px/1.2 'Lato',sans-serif; transition:.15s;
   display:inline-flex;align-items:center;justify-content:center;gap:8px;
 }
+.chart-actions{display:flex;justify-content:flex-end;margin:10px 0 0}
 .print-icon{font-size:16px;line-height:1}
 .print-btn:hover{background:var(--blue-01);border-color:var(--blue-dark)}
 .print-btn:disabled{opacity:.45;cursor:not-allowed;background:#fff}
@@ -247,7 +248,7 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
   .wrap{width:100%;max-width:none;margin:0}
   html.embedded,html.embedded body,html.embedded .wrap{height:auto;overflow:visible}
   html.embedded .wrap{padding:0}
-  .page-tabs,.page-actions,.lang-switch,.timeline .tl-controls,
+  .page-tabs,.page-actions,.chart-actions,.lang-switch,.timeline .tl-controls,
   .year-nav .tl-btn,.year-nav .tl-latest{display:none!important}
   body[data-print-page="population"] #tpPage,
   body[data-print-page="tp"] #populationPage{display:none!important}
@@ -491,6 +492,9 @@ input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%; 
       </div>
     </div>
     <div class="chart-box"><canvas id="flowChart"></canvas></div>
+    <div class="chart-actions">
+      <button class="print-btn" id="exportFlowPng" type="button"><span class="print-icon" aria-hidden="true">⬇</span><span data-i18n="exportPng">Export chart as PNG</span></button>
+    </div>
     <div class="legend">
       <div class="lg"><span class="sw" style="background:var(--blue)"></span><span data-i18n="legArr">Arrivals</span></div>
       <div class="lg"><span class="sw" style="background:var(--yellow)"></span><span data-i18n="legDep">Departures</span></div>
@@ -661,6 +665,7 @@ const I18N = {
     errShape:'Data file has no "months" array',
     tabPop:'Population trends', tabTP:'Temporary Protection', tabsAria:'Dashboard page',
     printPage:'Print this page',
+    exportPng:'Export chart as PNG',
     tpSub:'Temporary Protection registrations in Moldova · reported snapshots',
     viewingSnapshot:'Viewing snapshot',
     prevSnapshot:'Previous snapshot', nextSnapshot:'Next snapshot',
@@ -731,6 +736,7 @@ const I18N = {
     errShape:'Fișierul de date nu conține lista "months"',
     tabPop:'Tendințe ale populației', tabTP:'Protecție temporară', tabsAria:'Pagina tabloului de bord',
     printPage:'Tipărește această pagină',
+    exportPng:'Exportă graficul ca PNG',
     tpSub:'Înregistrări de protecție temporară în Moldova · situații raportate',
     viewingSnapshot:'Situația afișată',
     prevSnapshot:'Situația precedentă', nextSnapshot:'Situația următoare',
@@ -850,7 +856,20 @@ function printDashboard(page){
   window.addEventListener('afterprint',cleanup,{once:true});
   requestAnimationFrame(()=>window.print());
 }
+function exportFlowPng(){
+  if(!flowChart) return;
+  const src=flowChart.canvas, out=document.createElement('canvas');
+  out.width=src.width; out.height=src.height;
+  const c=out.getContext('2d');
+  c.fillStyle='#fff'; c.fillRect(0,0,out.width,out.height);
+  c.drawImage(src,0,0);
+  const a=document.createElement('a');
+  a.download='monthly-arrivals-departures.png';
+  a.href=out.toDataURL('image/png');
+  document.body.appendChild(a); a.click(); a.remove();
+}
 function initTabs(){
+  document.getElementById('exportFlowPng').onclick=exportFlowPng;
   document.getElementById('tabPopulation').onclick=()=>switchPage('population');
   document.getElementById('tabTP').onclick=()=>switchPage('tp');
   document.getElementById('printPopulation').onclick=()=>printDashboard('population');
