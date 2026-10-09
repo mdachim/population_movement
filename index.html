@@ -767,7 +767,7 @@ const I18N = {
 };
 const LANGS = Object.keys(I18N);
 let LANG = 'en';
-try{ const saved=localStorage.getItem('dashLang'); if(LANGS.includes(saved)) LANG=saved; }catch(e){}
+try{ const q=new URLSearchParams(location.search).get('lang'); const saved=q||localStorage.getItem('dashLang'); if(LANGS.includes(saved)) LANG=saved; }catch(e){}
 
 function T(key, params){
   const v = I18N[LANG][key] ?? I18N.en[key];
