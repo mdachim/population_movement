@@ -1,6 +1,6 @@
 {
   "source": "TP data.xlsx / weekly_snapshot",
-  "updated": "2026-09-02",
+  "updated": "2026-11-11",
   "snapshots": [
     {
       "date": "2023-03-26",
@@ -788,12 +788,17 @@
       "trend": 536
     },
     {
+      "date": "2026-10-25",
+      "cumulative": 61760,
+      "trend": 447
+    },
+    {
       "date": "2026-11-01",
       "cumulative": 62262,
       "trend": 502
     },
     {
-      "date": "2026-11-09",
+      "date": "2026-11-08",
       "cumulative": 62673,
       "trend": 411
     }
